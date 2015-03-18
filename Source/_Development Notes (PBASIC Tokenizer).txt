@@ -1,0 +1,292 @@
+Tokenizer Version History:
+
+
+Porting Notes:  
+*  64-bit platforms will have issues with the TModuleRec structure.  All char * will be 64-bits
+   instead of 32, thus causing the char * elements within TModuleRec to double in size.  Mark
+   Richardson suggests two possible solutions, 1) forcing these to 32-bit integers and casting
+   them to pointers where we need them, or 2) issuing a "force 32-bit" switch for the compiler
+   when recompiling on a 64-bit platform.  Solution 2 sounds the most pleasing.  Another possible
+   solution (and probably the best) is to "unpack" the structure and let the compiler set it to
+   64-bit boundaries, then simply document this fact for those compilers built on 64-bit platforms.
+*  Some compilers may have issues with conditional statements that evaluate to booleans and only
+   have the outer parentheses surrounding them.  Solution is to encase all boolean conditional
+   statements in their own parentheses.
+*  Some compilers may have issues with comparing "sizeof" results to integers without first casting
+   them to ints.
+
+
+
+
+Version 1.3 - Working on updating to support BS2px.
+
+Replaced __MACOS__ with __APPLE_CC__ in #ifdefs to conditionally compile in Apple/Mac code in OSx Lion with XCode 4.
+Adjusted code to remove over 800 warnings about assignments used as conditions.
+Fixed prototype of GetExpBits (used int instead of word).
+Uncommented the "#if defined(__cplusplus)" lines to make successful compile in C++ mode on Mac in XCode 4.
+Now compiles successfully in both Apple LLVM Compiler v3.1 and LLVM GCC v4.2.
+
+
+
+
+Version 1.23 - (Exact match for Delphi version 1.52b)
+
+Added GetUndefSymbolTableItem function for development purposes.
+Added Source Code vs. Bit Token Cross Reference feature to support simulators.
+
+
+
+
+Version 1.22
+
+Third pass of PBASIC 2.5 Support implementation.  This version contains all the retroactive updates applied to Delphi versions
+1.5, 1.51 and 1.52 including the following:
+Fixed bug in elementizer causing source that ends with no CR/LF to cause "Expected ':' or end-of-line error.
+Fixed bug in GetReservedWords routine where it wasn't properly null-terminating strings.
+Removed TCASE reserved word and associated functions.
+Modified ResolveConstant routine to use an unsigned 16-bit register instead of a 32-bit signed register.  This
+caused calculation errors for extreme cases.
+Modified error message, "159-'ELSE' must be preceded by 'IF'" to read "159-'ELSE' must be preceded by 'IF' or 'CASE' to alert
+mistakes made in the use of ELSE within a SELECT statement.
+Fixed bug in SELECT CASE routines that caused the run-time StackIdx to overflow unnecessarily.
+Added "Expected statements to follow previous 'CASE'" error message to keep people from defining
+empty CASE statements (this is PBASIC, not C).
+Modified "'ELSE' must be preceded by 'IF'" error to read, "'ELSE' must be preceded by 'IF' or 'CASE'" to handle the use of ELSE
+in SELECT statements.
+Added enhanced PUT syntax allowing optional WORD switch and multiple values, just like the enhanced WRITE command.
+Added enhanced GET syntax allowing optional WORD switch and multiple values, just like the enhanced READ command.
+Added additional error message, "Expected a constant, variable or 'WORD'" for use with enhanced PUT and enhanced WRITE
+command; they incorrectly said "Expected variable or 'WORD'" originally.
+Added ELSEIF command.
+Added GetReservedWords routine to allow editors to retrieve the LanguageVersion-TargetModule-sensitive reserved words list.
+Fixed bug causing WHILE and UNTIL reserved words to appear in the CommonSymbols instead of only in PBASIC 2.5.
+Added IF..THEN..ELSE..ENDIF feature.  Allows classic structure and even optomizes IF..THEN GOTO Label into classic
+structure.  Also allows multiple statements on single-line IF..THEN (no ENDIF needed).
+Added DO..LOOP structure.  Works perfectly.  Allows WHILE/UNTIL conditions on either the DO or LOOP part.  Also allows no
+conditions; ie: an unconditional loop.
+Added EXIT command.  Allows exiting a DO..LOOP from anywhere within the loop.
+Added CLRDN, CLREOL, CRSRDN, CRSRLF, CRSRRT, CRSRUP, LF and CRSRXY constants that are set equal to the ASCII
+control character that represents their action in the BASIC Stamp Windows editor.
+Added enhanced READ and WRITE routines to allow reading and writing word-sized values as well as multiple values per instruction.
+Fixed bug allowing labels without trailing colons.
+Added PIN declarative.  Creates a context sensitive symbol that becomes INx, OUTx or a constant depending on where it appears.
+Fixed multi-line code blocks to disallow overlapping.
+Optimized PatchAddresses code.
+Added SELECT statement support.
+Added line-continuation feature ("," at end of line).
+Added ON..GOTO command (translates to BRANCH).
+Added ON..GOSUB command.
+Added PBASIC directive.  Works perfectly.
+Added #IF..#THEN..#ELSE..#ENDIF, #DEFINE and #ERROR conditional-compile directives.
+Added #SELECT #CASE..#ENDSELECT conditional-compile directives.
+Added DEBUGIN command.
+Added CRSRX and CRSRY constants.
+
+
+
+
+Version 1.21
+
+Second pass of PBASIC 2.5 Support implementation.  Compiles all 886 PBASIC 2.0 test cases.
+
+
+
+
+Version 1.20
+
+Working on initial pass of PBASIC 2.5 Support implementation.
+
+
+
+
+Version 1.16
+
+Extracted Source from TModuleRec and left it as a separate pointer parameter in Compile to support VisualBASIC language
+and in preparation for Palm platform.
+
+Renamed SourceStart and SourceLength elements of TModuleRec to ErrorStart and ErrorLength, respectively.
+
+Reworked Error routine to copy error string to the top (near the end) of the tzModuleRec.PacketBuffer area and then
+point tzModuleRec.Error to the start of the error string.
+
+Added Version function to return current version of the tokenizer.
+
+Modified Elementizer (and GetDirective) routine to look at source up to and including the tzModuleRec->SourceSize character
+to fix bug where elementizer doesn't generate an "END" element at end of source if the source size is reported to not include
+the new-line character.  This problem showed up in Linux, and should in Macintosh as well.
+
+
+
+
+Version 1.15
+
+Done porting to Macintosh.  Works perfectly.
+
+
+
+
+Version 1.14
+
+Done porting to Linux.  Works perfectly.
+Removed AllowStampDirective and replaced it with boolean argument in Compile routine.  This is because 3rd-party developer's
+will not have access to the source code so they need a flag to set or clear this option.
+Mapped error string into end of source to maintain integrity with O.S.s that might remove tokenizer from memory before caller
+processes the string.
+Removed PacketBufferSize since it was redundant (PacketBufferSize = PacketCount * 18)
+Modified Elementize to convert Null (0) characters to ETX also, since it does this only on the first pass.
+Removed VarBitCount and VarBases from the TModuleRec structure since is it useless to developer.  They are now global.          
+
+
+
+
+Version 1.13 - First true "porting" version.  
+
+Porting to Linux.
+
+
+
+Version 1.12
+
+Fixed "Out of variable space" error that occured in CompileVar where ArraySize is added to a byte-sized variable,
+then checked to see if it is > 255.  Now the the value plus ArraySize is checked first and if it is less than 256,
+it actually increments the value.
+Also, CompileVar was allowing GetRight to clobber the .SourceStart and .SourceLength elements before potential
+error messages should occur.  This has been fixed by postponing the GetRight call until after the errors are checked.
+
+
+
+Version 1.11
+
+Updated TestRecAlignment routine to define all strings pointed to by the characters pointers
+to reside inside the last 18 bytes of the Source byte array so they are still valid after the
+shared library is removed from memory.  This absolutely affects Palm OS and WinCE but may affect
+other platforms as well.
+
+
+
+Version 1.10
+
+Added support for BS2pe.  Fully tested.
+
+
+
+Version 1.03 
+
+Modified to add comments about release .dll and changed Debug define to DevDebug.
+Also matches v1.03 of Delphi source.  No changes related to Delphi source (Delphi version
+modified to eliminate the "in" set-type operator since that causes improper executation
+when run under Virtual PC for Mac.
+
+
+Version 1.02 - 100% Complete
+
+This is the first complete version written in C.  The Version number matches that of the
+corresponding Delphi-coded tokenizer.
+Fully implemented and tested GetRightBracket, CompileInputSequence, GetByteVariable,
+GetLeft and CompileSerin.
+Fully implemented and tested GetQuestion, CheckQuestion, CompileInputSequence and
+CompileSerout.
+Fully implemented and tested CompileDebug.
+Fully implemented and tested GetTo, CompileFor and CompileNext.
+Fixed bug in CopyExpression; it copied one byte too many.
+Fully implemented and tested PreparePackets.  Passes all tests up to #610 (expectedly)
+Fully implemented and tested CompileGet, CompilePut and CompileRun.
+Fully implemented and tested CompileLCDCmd, CompileLCDin and CompileLCDOut.
+Fully implemented and tested CompileI2CIn and CompileI2COut.
+Fully implemented and tested CompilePollin, CompilePollmode, CompilePollout,
+CompilePollrun and CompilePollWait.
+Fully implemented and tested CompileOwin, CompileOwout.
+Fully implemented and tested CompileAuxio, CompileIOTerm, CompileMainio and CompileStore.
+
+
+
+Version 0.09 - 79.9% Complete
+
+Fully implemented and tested CompileIf.
+Fully implemented and tested GetComma, GetLeftBracket, GetCommaOrBracket, PatchAddresses
+and CompileBranch.
+Fully implemented and tested GetValue, GetRead and CompileButton.
+Fully implemented and tested GetWriteEnterExpression and CompileCount.
+Fully implemented and tested CompilePulsin.
+Fully implemented and tested CompileRCTime.
+Fully implemented and tested CompilePause.
+Fully implemented and tested CompileInput.
+Fully implemented and tested CompileLow.
+Fully implemented and tested CompileHigh.
+Fully implemented and tested CompileToggle.
+Fully implemented and tested CompileReverse.
+Fully implemented and tested CompileLookup.
+Fully implemented and tested CompileLookdown.
+Fully implemented and tested CompileNap.
+Fully implemented and tested EnterConstant and CompileDTMFOut.
+Fully implemented and tested CompileFreqOut.
+Fully implemented and tested CompilePWM.
+Fully implemented and tested CompileRandom.
+Fully implemented and tested CompileRead.
+Fully implemented and tested CompileWrite.
+Fully implemented and tested EnterOperator, GetBackslash, CheckBackslash and CompileXout.
+Fully implemented and tested Shiftin.
+Fully implemented and tested Shiftout
+
+
+
+Version 0.08 - 65% Complete
+
+Fully implemented and tested CompileReturn.
+Fully implemented and tested Expression Engine.
+Fully implemented and tested CompileLet.
+
+
+
+Version 0.07 - 55% Complete
+
+Fully implemented and tested CompileVAR. 
+Fully implemented CountGosubs routine.
+Fully implemented CompileEnd, CompileStop, CompileGOTO and CompileGOSUB.
+
+
+
+Version 0.06 - 48% Complete.
+
+Fully implemented and tested CompileConstants and CompileData.  
+
+
+
+Version 0.05
+
+Fully implemented new cascaded error methods.  Each function that can potentially experience
+a tokenizer error returns a TErrorCode.  The 0'th TErrorCode is actually a Success, not an
+error.  All routines that call those error-prone functions do so in the following manner:
+INSTEAD OF THIS:  DoSomething(parameter);
+WE NOW DO THIS:   if (Result = DoSomething(parameter)) return(Result);
+WHERE "Result" IS A TErrorCode type.
+NOTE: If condition equates to True (a non-0'th error code) then, and only then, does the
+      "return(Result) statement get executed.  This seems a little odd, because litterally
+      reading the statement would make it seem like it returns if successful, but the 
+      "ecS" (Successful) error code is equated to a False statement.
+
+
+
+Version 0.04
+
+Working on method of cascaded error returning.
+
+
+
+Version 0.03
+
+Not sure what changed here.
+
+
+
+Version 0.02
+
+Elemtizer almost complete.  Fully tested so far.
+Symbol Engine complete and fully tested.
+
+
+
+Version 0.01
+
+Symbols, structures and constants set up.
+

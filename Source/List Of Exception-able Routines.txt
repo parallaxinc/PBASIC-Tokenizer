@@ -1,0 +1,186 @@
+HISTORY AND DESCRIPTION
+-----------------------
+The BASIC Stamp 2 PBASIC Tokenizer was originally written and released in 1995 in 16-bit x86 assembly, meant to run in DOS.  It was later enhanced to be
+32-bit x86 assembly to link and run in Windows 95 (in 1997) when the first Windows-based BASIC Stamp Editor was developed.  Later still, it was completely
+rewritten in both Delphi and C (simultaneously) for release in 2000.
+
+At the time of rewrite to a high-level language (Delphi and C) it was decided that the highest degree of portability could be had by using pure C (C89/C99)
+rather than C++.  Unfortunately, C was missing one feature that was readily available in Delphi and already effectively implemented in the original assembly
+code: an Exception/Abort feature.
+
+By nature of the tasks a compiler must perform, it is vital to be able to bail out (abort) a deep sequence of steps in order to escape to a higher level of
+code when something bad happens, like a fatal syntax sequence in the user's PBASIC source code.
+
+To achieve this in pure C, the concept of "Exception-able Routines" was born; all routines are written essentially the same way, but those that may experience
+a fatal event, and therefore must abort, are listed below.  Furthermore, any time one of these "exception-able" routines is called, it must be wrapped in a
+conditional statement that can trap and properly handle the aborted event (exception).  Without this conditional wrapping of the calls to "exception-able" 
+routines, the concept falls apart and compiler's integrity is compromised.
+
+It is CRITICAL that any future development treat "exception-able" routines in the fashion listed above.  To see examples, search "tokenizer.cpp" for any of the
+routines listed below.
+
+
+EXCEPTION-ABLE ROUTINES
+----------------------- 
+All calls to any of these routines must be encased in a conditional statement that properly traps and processes possible "exceptions" (aborts) from the routine.
+
+AdjustSymbols
+AppendExpression
+AssignSymbol
+
+CCNestingError  
+CompileAuxio
+CompileBranch
+CompileButton
+CompileCase
+CompileCCCase
+CompileCCDefine
+CompileCCDirectives
+CompileCCElse
+CompileCCEndIf
+CompileCCEndSelect
+CompileCCError
+CompileCCIf
+CompileCCSelect
+CompileConstants
+CompileCount
+CompileData
+CompileDebug
+CompileDebugIn
+CompileDo
+CompileDtmfout
+CompileEditorDirectives
+CompileElse
+CompileEnd
+CompileEndIf
+CompileEndSelect
+CompileExit
+CompileFor
+CompileFreqout
+CompileGet
+CompileGosub
+CompileGoto
+CompileHigh
+CompileI2cin
+CompileI2cout
+CompileIf
+CompileInput
+CompileInputSequence
+CompileInstructions
+CompileIoterm
+CompileLcdcmd
+CompileLcdin
+CompileLcdout
+CompileLet
+CompileLookdown
+CompileLookup
+CompileLoop
+CompileLow
+CompileMainio
+CompileNap
+CompileNext
+CompileOn
+CompileOutput
+CompileOutputSequence
+CompileOwin
+CompileOwout
+CompilePause
+CompilePBasicDirective
+CompilePins
+CompilePollin
+CompilePollmode
+CompilePollout
+CompilePollrun
+CompilePollwait
+CompilePortDirective
+CompilePulsin
+CompilePulsout
+CompilePut
+CompilePwm
+CompileRandom
+CompileRctime
+CompileRead
+CompileReturn
+CompileReverse
+CompileRun
+CompileSelect
+CompileSerin
+CompileSerout
+CompileShiftin
+CompileShiftout
+CompileSleep
+CompileStampDirective
+CompileStop
+CompileStore
+CompileToggle
+CompileVar
+CompileWrite
+CompileXout
+CopySymbol
+CountGosubs
+
+ElementError
+Elementize
+Enter0Code
+EnterAddress
+EnterChr
+EnterConstant
+EnterData
+EnterEEPROM
+EnterElement
+EnterExpression
+EnterExpressionBits
+EnterExpressionConstant
+EnterExpressionOperator
+EnterExpressionVariable
+EnterOperator
+EnterSymbol
+EnterText
+EnterUndefSymbol
+Error
+
+GetAddressEnter
+GetBackslash
+GetByteVariable
+GetCCDirectiveExpression
+GetComma
+GetCommaOrBracket
+GetCommaOrEnd
+GetDirective
+GetEnd
+GetEqual
+GetExpression
+GetFilename
+GetLeft
+GetLeftBracket
+GetModifiers
+GetNumber
+GetQuestion
+GetRead
+GetReadWrite
+GetRight
+GetRightBracket
+GetString
+GetSymbol
+GetTimeout
+GetTO
+GetUndefinedSymbol
+GetValue
+GetValueConditional
+GetValueEnterExpression
+GetWrite
+GetWriteEnterExpression
+
+InitSymbols
+
+NestingError
+
+PatchAddress
+PatchRemainingAddresses
+PatchSkipLabels
+PopLeft
+PopOperators
+Push
+PushLeft
+
+ResolveConstant
