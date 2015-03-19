@@ -1,0 +1,25 @@
+{
+  "name": "pbasic-tokenizer",
+  "version": "0.0.0",
+  "description": "BASIC Stamp PBASIC Tokenizer",
+  "author": "Jacob Rosenthal",
+  "contributors": [],
+  "repository": "parallaxinc/PBASIC-Tokenizer",
+  "license": "MIT",
+  "engines": {
+    "node": ">= 0.10"
+  },
+  "main": "index.js",
+  "files": [
+    "LICENSE",
+    "index.js"
+  ],
+  "scripts": {
+    "release": "emcc -o index.js -DLINUX Source/tokenizer.cpp -w -s EXPORTED_FUNCTIONS=\"['_TestRecAlignment', '_Version', '_Compile']\" --post-js post.js"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "keywords": [
+    "parallax pbasic tokenizer"
+  ]
+}
