@@ -7009,10 +7009,10 @@ function __Z11CompileDatah($LastPass) {
     $31 = $30&65535;
     __Z14CancelElementstt($27,$31);
    } else {
-    L15: while(1) {
+    L17: while(1) {
      $32 = HEAP32[$Element>>2]|0;
      $33 = ($32|0)==(17);
-     L17: do {
+     L19: do {
       if ($33) {
        $34 = (__Z15ResolveConstanthhPh(1,0,$Resolved)|0);
        $Result = $34;
@@ -7042,7 +7042,7 @@ function __Z11CompileDatah($LastPass) {
        $46 = ($45|0)!=(14);
        if ($46) {
         label = 23;
-        break L15;
+        break L17;
        }
        label = 66;
       } else {
@@ -7110,10 +7110,10 @@ function __Z11CompileDatah($LastPass) {
          $84 = ($83|0)==(14);
          if (!($84)) {
           label = 43;
-          break L15;
+          break L17;
          }
          (__Z10GetElementP12TElementList($Element)|0);
-         break L17;
+         break L19;
         }
        } while(0);
        $97 = (__Z15ResolveConstanthhPh(1,0,$Resolved)|0);
@@ -7159,7 +7159,7 @@ function __Z11CompileDatah($LastPass) {
        $117 = ($116|0)!=(14);
        if ($117) {
         label = 60;
-        break L15;
+        break L17;
        }
        label = 66;
       }
@@ -8065,6 +8065,16 @@ function __Z19CompileInstructionsv() {
      $55 = $54&65535;
      do {
       switch ($55|0) {
+      case 0:  {
+       $56 = (__Z12CompileAuxiov()|0);
+       $Result = $56;
+       $57 = ($56|0)!=(0);
+       if ($57) {
+        label = 30;
+        break L1;
+       }
+       break;
+      }
       case 1:  {
        $59 = (__Z13CompileBranchv()|0);
        $Result = $59;
@@ -8075,12 +8085,12 @@ function __Z19CompileInstructionsv() {
        }
        break;
       }
-      case 12:  {
-       $86 = (__Z10CompileEndv()|0);
-       $Result = $86;
-       $87 = ($86|0)!=(0);
-       if ($87) {
-        label = 60;
+      case 2:  {
+       $62 = (__Z13CompileButtonv()|0);
+       $Result = $62;
+       $63 = ($62|0)!=(0);
+       if ($63) {
+        label = 36;
         break L1;
        }
        break;
@@ -8095,22 +8105,42 @@ function __Z19CompileInstructionsv() {
        }
        break;
       }
-      case 16:  {
-       $95 = (__Z11CompileExitv()|0);
-       $Result = $95;
-       $96 = ($95|0)!=(0);
-       if ($96) {
-        label = 69;
+      case 4:  {
+       $68 = (__Z12CompileCountv()|0);
+       $Result = $68;
+       $69 = ($68|0)!=(0);
+       if ($69) {
+        label = 42;
         break L1;
        }
        break;
       }
-      case 22:  {
-       $113 = (__Z11CompileHighv()|0);
-       $Result = $113;
-       $114 = ($113|0)!=(0);
-       if ($114) {
-        label = 87;
+      case 5:  {
+       $71 = (__Z12CompileDebugv()|0);
+       $Result = $71;
+       $72 = ($71|0)!=(0);
+       if ($72) {
+        label = 45;
+        break L1;
+       }
+       break;
+      }
+      case 6:  {
+       $74 = (__Z14CompileDebugInv()|0);
+       $Result = $74;
+       $75 = ($74|0)!=(0);
+       if ($75) {
+        label = 48;
+        break L1;
+       }
+       break;
+      }
+      case 8:  {
+       $77 = (__Z9CompileDov()|0);
+       $Result = $77;
+       $78 = ($77|0)!=(0);
+       if ($78) {
+        label = 51;
         break L1;
        }
        break;
@@ -8125,12 +8155,112 @@ function __Z19CompileInstructionsv() {
        }
        break;
       }
-      case 8:  {
-       $77 = (__Z9CompileDov()|0);
-       $Result = $77;
-       $78 = ($77|0)!=(0);
-       if ($78) {
-        label = 51;
+      case 10:  {
+       $83 = (__Z11CompileElsev()|0);
+       $Result = $83;
+       $84 = ($83|0)!=(0);
+       if ($84) {
+        label = 57;
+        break L1;
+       }
+       break;
+      }
+      case 12:  {
+       $86 = (__Z10CompileEndv()|0);
+       $Result = $86;
+       $87 = ($86|0)!=(0);
+       if ($87) {
+        label = 60;
+        break L1;
+       }
+       break;
+      }
+      case 13:  {
+       $89 = (__Z12CompileEndIfv()|0);
+       $Result = $89;
+       $90 = ($89|0)!=(0);
+       if ($90) {
+        label = 63;
+        break L1;
+       }
+       break;
+      }
+      case 14:  {
+       $92 = (__Z16CompileEndSelectv()|0);
+       $Result = $92;
+       $93 = ($92|0)!=(0);
+       if ($93) {
+        label = 66;
+        break L1;
+       }
+       break;
+      }
+      case 16:  {
+       $95 = (__Z11CompileExitv()|0);
+       $Result = $95;
+       $96 = ($95|0)!=(0);
+       if ($96) {
+        label = 69;
+        break L1;
+       }
+       break;
+      }
+      case 17:  {
+       $98 = (__Z10CompileForv()|0);
+       $Result = $98;
+       $99 = ($98|0)!=(0);
+       if ($99) {
+        label = 72;
+        break L1;
+       }
+       break;
+      }
+      case 18:  {
+       $101 = (__Z14CompileFreqoutv()|0);
+       $Result = $101;
+       $102 = ($101|0)!=(0);
+       if ($102) {
+        label = 75;
+        break L1;
+       }
+       break;
+      }
+      case 19:  {
+       $104 = (__Z10CompileGetv()|0);
+       $Result = $104;
+       $105 = ($104|0)!=(0);
+       if ($105) {
+        label = 78;
+        break L1;
+       }
+       break;
+      }
+      case 20:  {
+       $107 = (__Z12CompileGosubv()|0);
+       $Result = $107;
+       $108 = ($107|0)!=(0);
+       if ($108) {
+        label = 81;
+        break L1;
+       }
+       break;
+      }
+      case 21:  {
+       $110 = (__Z11CompileGotov()|0);
+       $Result = $110;
+       $111 = ($110|0)!=(0);
+       if ($111) {
+        label = 84;
+        break L1;
+       }
+       break;
+      }
+      case 22:  {
+       $113 = (__Z11CompileHighv()|0);
+       $Result = $113;
+       $114 = ($113|0)!=(0);
+       if ($114) {
+        label = 87;
         break L1;
        }
        break;
@@ -8186,46 +8316,6 @@ function __Z19CompileInstructionsv() {
        $134 = ($133|0)!=(0);
        if ($134) {
         label = 102;
-        break L1;
-       }
-       break;
-      }
-      case 18:  {
-       $101 = (__Z14CompileFreqoutv()|0);
-       $Result = $101;
-       $102 = ($101|0)!=(0);
-       if ($102) {
-        label = 75;
-        break L1;
-       }
-       break;
-      }
-      case 19:  {
-       $104 = (__Z10CompileGetv()|0);
-       $Result = $104;
-       $105 = ($104|0)!=(0);
-       if ($105) {
-        label = 78;
-        break L1;
-       }
-       break;
-      }
-      case 20:  {
-       $107 = (__Z12CompileGosubv()|0);
-       $Result = $107;
-       $108 = ($107|0)!=(0);
-       if ($108) {
-        label = 81;
-        break L1;
-       }
-       break;
-      }
-      case 21:  {
-       $110 = (__Z11CompileGotov()|0);
-       $Result = $110;
-       $111 = ($110|0)!=(0);
-       if ($111) {
-        label = 84;
         break L1;
        }
        break;
@@ -8336,96 +8426,6 @@ function __Z19CompileInstructionsv() {
        $167 = ($166|0)!=(0);
        if ($167) {
         label = 135;
-        break L1;
-       }
-       break;
-      }
-      case 0:  {
-       $56 = (__Z12CompileAuxiov()|0);
-       $Result = $56;
-       $57 = ($56|0)!=(0);
-       if ($57) {
-        label = 30;
-        break L1;
-       }
-       break;
-      }
-      case 5:  {
-       $71 = (__Z12CompileDebugv()|0);
-       $Result = $71;
-       $72 = ($71|0)!=(0);
-       if ($72) {
-        label = 45;
-        break L1;
-       }
-       break;
-      }
-      case 2:  {
-       $62 = (__Z13CompileButtonv()|0);
-       $Result = $62;
-       $63 = ($62|0)!=(0);
-       if ($63) {
-        label = 36;
-        break L1;
-       }
-       break;
-      }
-      case 13:  {
-       $89 = (__Z12CompileEndIfv()|0);
-       $Result = $89;
-       $90 = ($89|0)!=(0);
-       if ($90) {
-        label = 63;
-        break L1;
-       }
-       break;
-      }
-      case 14:  {
-       $92 = (__Z16CompileEndSelectv()|0);
-       $Result = $92;
-       $93 = ($92|0)!=(0);
-       if ($93) {
-        label = 66;
-        break L1;
-       }
-       break;
-      }
-      case 10:  {
-       $83 = (__Z11CompileElsev()|0);
-       $Result = $83;
-       $84 = ($83|0)!=(0);
-       if ($84) {
-        label = 57;
-        break L1;
-       }
-       break;
-      }
-      case 17:  {
-       $98 = (__Z10CompileForv()|0);
-       $Result = $98;
-       $99 = ($98|0)!=(0);
-       if ($99) {
-        label = 72;
-        break L1;
-       }
-       break;
-      }
-      case 4:  {
-       $68 = (__Z12CompileCountv()|0);
-       $Result = $68;
-       $69 = ($68|0)!=(0);
-       if ($69) {
-        label = 42;
-        break L1;
-       }
-       break;
-      }
-      case 6:  {
-       $74 = (__Z14CompileDebugInv()|0);
-       $Result = $74;
-       $75 = ($74|0)!=(0);
-       if ($75) {
-        label = 48;
         break L1;
        }
        break;
@@ -10116,6 +10116,171 @@ function __Z13GetExpressionhhih($Conditional,$PinIsConstant,$SplitExpression,$CC
   }
   $15 = $State;
   switch ($15|0) {
+  case 2:  {
+   $48 = (($Element) + 4|0);
+   $49 = HEAP16[$48>>1]|0;
+   $50 = $49&255;
+   $51 = (__Z4Pushh($50)|0);
+   $Result = $51;
+   $52 = ($51|0)!=(0);
+   if ($52) {
+    label = 24;
+    break L5;
+   }
+   $State = 0;
+   break;
+  }
+  case 0:  {
+   (__Z10GetElementP12TElementList($Element)|0);
+   $54 = HEAP32[$Element>>2]|0;
+   switch ($54|0) {
+   case 46:  {
+    $55 = $4;
+    $56 = ($55<<24>>24)!=(0);
+    if (!($56)) {
+     label = 28;
+     break L5;
+    }
+    $58 = HEAP32[((238728 + 44|0))>>2]|0;
+    $59 = ($58|0)==(1);
+    if ($59) {
+     label = 30;
+     break L5;
+    }
+    HEAP32[$Element>>2] = 12;
+    $61 = (($Element) + 4|0);
+    HEAP16[$61>>1] = 0;
+    $State = 4;
+    break;
+   }
+   case 42: case 5: case 12:  {
+    $State = 4;
+    break;
+   }
+   case 44:  {
+    $62 = $4;
+    $63 = ($62<<24>>24)!=(0);
+    if (!($63)) {
+     label = 34;
+     break L5;
+    }
+    $State = 4;
+    break;
+   }
+   case 1: case 0:  {
+    $65 = $4;
+    $66 = ($65<<24>>24)!=(0);
+    if (!($66)) {
+     label = 39;
+     break L5;
+    }
+    $State = 4;
+    break;
+   }
+   case 11:  {
+    $68 = $4;
+    $69 = ($68<<24>>24)!=(0);
+    if ($69) {
+     label = 43;
+     break L5;
+    }
+    $State = 2;
+    break;
+   }
+   case 10:  {
+    $71 = (($Element) + 4|0);
+    $72 = HEAP16[$71>>1]|0;
+    $73 = $72&65535;
+    $74 = ($73|0)!=(16);
+    if ($74) {
+     label = 46;
+     break L5;
+    }
+    $79 = (($Element) + 4|0);
+    HEAP16[$79>>1] = 3;
+    $State = 2;
+    break;
+   }
+   case 18:  {
+    $State = 1;
+    break;
+   }
+   default: {
+    label = 51;
+    break L5;
+   }
+   }
+   break;
+  }
+  case 1:  {
+   $45 = (($Element) + 4|0);
+   HEAP16[$45>>1] = 128;
+   $46 = HEAP8[238712>>0]|0;
+   $47 = (($46) + 1)<<24>>24;
+   HEAP8[238712>>0] = $47;
+   $State = 2;
+   break;
+  }
+  case 3:  {
+   $16 = (__Z8PushLeftv()|0);
+   $Result = $16;
+   $17 = ($16|0)!=(0);
+   if ($17) {
+    label = 8;
+    break L5;
+   }
+   while(1) {
+    $19 = (__Z8PushLeftv()|0);
+    $Result = $19;
+    $20 = ($19|0)!=(0);
+    if ($20) {
+     label = 11;
+     break L5;
+    }
+    (__Z10GetElementP12TElementList($Element)|0);
+    $22 = HEAP32[$Element>>2]|0;
+    $23 = ($22|0)==(18);
+    if (!($23)) {
+     break;
+    }
+   }
+   $24 = HEAP32[$Element>>2]|0;
+   $25 = ($24|0)==(39);
+   if ($25) {
+    $26 = $3;
+    $27 = ($26|0)!=(0);
+    if ($27) {
+     label = 16;
+     break L5;
+    }
+    $29 = HEAP8[238440>>0]|0;
+    $30 = $29&255;
+    $31 = (($30) - 2)|0;
+    $32 = $31&255;
+    HEAP8[238440>>0] = $32;
+    $33 = HEAP8[238712>>0]|0;
+    $34 = $33&255;
+    $35 = (($34) - 2)|0;
+    $36 = $35&255;
+    HEAP8[238712>>0] = $36;
+    $37 = (($Element) + 4|0);
+    $38 = HEAP16[$37>>1]|0;
+    $39 = $38&255;
+    $40 = (__Z4Pushh($39)|0);
+    $Result = $40;
+    $41 = ($40|0)!=(0);
+    if ($41) {
+     label = 18;
+     break L5;
+    }
+   } else {
+    $43 = HEAP16[238720>>1]|0;
+    $44 = (($43) + -1)<<16>>16;
+    HEAP16[238720>>1] = $44;
+    $State = 0;
+   }
+   break;
+  }
   case 4:  {
    $84 = HEAP32[$Element>>2]|0;
    $85 = ($84|0)==(12);
@@ -10187,171 +10352,6 @@ function __Z13GetExpressionhhih($Conditional,$PinIsConstant,$SplitExpression,$CC
     }
    }
    $State = 5;
-   break;
-  }
-  case 1:  {
-   $45 = (($Element) + 4|0);
-   HEAP16[$45>>1] = 128;
-   $46 = HEAP8[238712>>0]|0;
-   $47 = (($46) + 1)<<24>>24;
-   HEAP8[238712>>0] = $47;
-   $State = 2;
-   break;
-  }
-  case 2:  {
-   $48 = (($Element) + 4|0);
-   $49 = HEAP16[$48>>1]|0;
-   $50 = $49&255;
-   $51 = (__Z4Pushh($50)|0);
-   $Result = $51;
-   $52 = ($51|0)!=(0);
-   if ($52) {
-    label = 24;
-    break L5;
-   }
-   $State = 0;
-   break;
-  }
-  case 0:  {
-   (__Z10GetElementP12TElementList($Element)|0);
-   $54 = HEAP32[$Element>>2]|0;
-   switch ($54|0) {
-   case 1: case 0:  {
-    $65 = $4;
-    $66 = ($65<<24>>24)!=(0);
-    if (!($66)) {
-     label = 39;
-     break L5;
-    }
-    $State = 4;
-    break;
-   }
-   case 46:  {
-    $55 = $4;
-    $56 = ($55<<24>>24)!=(0);
-    if (!($56)) {
-     label = 28;
-     break L5;
-    }
-    $58 = HEAP32[((238728 + 44|0))>>2]|0;
-    $59 = ($58|0)==(1);
-    if ($59) {
-     label = 30;
-     break L5;
-    }
-    HEAP32[$Element>>2] = 12;
-    $61 = (($Element) + 4|0);
-    HEAP16[$61>>1] = 0;
-    $State = 4;
-    break;
-   }
-   case 10:  {
-    $71 = (($Element) + 4|0);
-    $72 = HEAP16[$71>>1]|0;
-    $73 = $72&65535;
-    $74 = ($73|0)!=(16);
-    if ($74) {
-     label = 46;
-     break L5;
-    }
-    $79 = (($Element) + 4|0);
-    HEAP16[$79>>1] = 3;
-    $State = 2;
-    break;
-   }
-   case 18:  {
-    $State = 1;
-    break;
-   }
-   case 42: case 5: case 12:  {
-    $State = 4;
-    break;
-   }
-   case 44:  {
-    $62 = $4;
-    $63 = ($62<<24>>24)!=(0);
-    if (!($63)) {
-     label = 34;
-     break L5;
-    }
-    $State = 4;
-    break;
-   }
-   case 11:  {
-    $68 = $4;
-    $69 = ($68<<24>>24)!=(0);
-    if ($69) {
-     label = 43;
-     break L5;
-    }
-    $State = 2;
-    break;
-   }
-   default: {
-    label = 51;
-    break L5;
-   }
-   }
-   break;
-  }
-  case 3:  {
-   $16 = (__Z8PushLeftv()|0);
-   $Result = $16;
-   $17 = ($16|0)!=(0);
-   if ($17) {
-    label = 8;
-    break L5;
-   }
-   while(1) {
-    $19 = (__Z8PushLeftv()|0);
-    $Result = $19;
-    $20 = ($19|0)!=(0);
-    if ($20) {
-     label = 11;
-     break L5;
-    }
-    (__Z10GetElementP12TElementList($Element)|0);
-    $22 = HEAP32[$Element>>2]|0;
-    $23 = ($22|0)==(18);
-    if (!($23)) {
-     break;
-    }
-   }
-   $24 = HEAP32[$Element>>2]|0;
-   $25 = ($24|0)==(39);
-   if ($25) {
-    $26 = $3;
-    $27 = ($26|0)!=(0);
-    if ($27) {
-     label = 16;
-     break L5;
-    }
-    $29 = HEAP8[238440>>0]|0;
-    $30 = $29&255;
-    $31 = (($30) - 2)|0;
-    $32 = $31&255;
-    HEAP8[238440>>0] = $32;
-    $33 = HEAP8[238712>>0]|0;
-    $34 = $33&255;
-    $35 = (($34) - 2)|0;
-    $36 = $35&255;
-    HEAP8[238712>>0] = $36;
-    $37 = (($Element) + 4|0);
-    $38 = HEAP16[$37>>1]|0;
-    $39 = $38&255;
-    $40 = (__Z4Pushh($39)|0);
-    $Result = $40;
-    $41 = ($40|0)!=(0);
-    if ($41) {
-     label = 18;
-     break L5;
-    }
-   } else {
-    $43 = HEAP16[238720>>1]|0;
-    $44 = (($43) + -1)<<16>>16;
-    HEAP16[238720>>1] = $44;
-    $State = 0;
-   }
    break;
   }
   case 5:  {
@@ -13441,10 +13441,10 @@ function __Z12GetDirectivev() {
   $51 = HEAP8[$50>>0]|0;
   $52 = $51 << 24 >> 24;
   $53 = ($52|0)==(36);
-  L23: do {
+  L24: do {
    if ($53) {
     $Directive = 1;
-    L25: while(1) {
+    L27: while(1) {
      $54 = $Directive;
      $55 = $54&255;
      $56 = ($55|0)>(0);
@@ -13476,51 +13476,17 @@ function __Z12GetDirectivev() {
      $70 = HEAP8[250368>>0]|0;
      $71 = $70&255;
      switch ($71|0) {
-     case 3:  {
-      $72 = HEAP32[250392>>2]|0;
-      $73 = (__Z12EnterElement12TElementTypeth($72,0,1)|0);
-      $Result = $73;
-      $74 = ($73|0)!=(0);
-      if ($74) {
-       label = 23;
-       break L25;
-      }
-      $Directive = 0;
-      break;
-     }
-     case 32: case 9: case 0:  {
-      break;
-     }
      case 44:  {
       $76 = (__Z12EnterElement12TElementTypeth(14,0,0)|0);
       $Result = $76;
       $77 = ($76|0)!=(0);
       if ($77) {
        label = 28;
-       break L25;
+       break L27;
       }
       break;
      }
-     case 125:  {
-      $79 = (__Z12EnterElement12TElementTypeth(20,0,0)|0);
-      $Result = $79;
-      $80 = ($79|0)!=(0);
-      if ($80) {
-       label = 31;
-       break L25;
-      }
-      __Z9SkipToEndv();
-      $Directive = 0;
-      break;
-     }
-     case 34:  {
-      $82 = (__Z11GetFilenameh(1)|0);
-      $Result = $82;
-      $83 = ($82|0)!=(0);
-      if ($83) {
-       label = 35;
-       break L25;
-      }
+     case 32: case 9: case 0:  {
       break;
      }
      case 36:  {
@@ -13529,7 +13495,7 @@ function __Z12GetDirectivev() {
       $86 = ($85|0)!=(0);
       if ($86) {
        label = 38;
-       break L25;
+       break L27;
       }
       $88 = $Directive;
       $89 = (($88) + 1)<<24>>24;
@@ -13538,8 +13504,32 @@ function __Z12GetDirectivev() {
       $91 = ($90|0)!=(0);
       if ($91) {
        label = 40;
-       break L25;
+       break L27;
       }
+      break;
+     }
+     case 3:  {
+      $72 = HEAP32[250392>>2]|0;
+      $73 = (__Z12EnterElement12TElementTypeth($72,0,1)|0);
+      $Result = $73;
+      $74 = ($73|0)!=(0);
+      if ($74) {
+       label = 23;
+       break L27;
+      }
+      $Directive = 0;
+      break;
+     }
+     case 125:  {
+      $79 = (__Z12EnterElement12TElementTypeth(20,0,0)|0);
+      $Result = $79;
+      $80 = ($79|0)!=(0);
+      if ($80) {
+       label = 31;
+       break L27;
+      }
+      __Z9SkipToEndv();
+      $Directive = 0;
       break;
      }
      case 57: case 56: case 55: case 54: case 53: case 52: case 51: case 50: case 49: case 48:  {
@@ -13548,7 +13538,7 @@ function __Z12GetDirectivev() {
       $94 = ($93|0)!=(0);
       if ($94) {
        label = 43;
-       break L25;
+       break L27;
       }
       $96 = HEAP16[$Number>>1]|0;
       $97 = (__Z12EnterElement12TElementTypeth(12,$96,0)|0);
@@ -13556,7 +13546,17 @@ function __Z12GetDirectivev() {
       $98 = ($97|0)!=(0);
       if ($98) {
        label = 45;
-       break L25;
+       break L27;
+      }
+      break;
+     }
+     case 34:  {
+      $82 = (__Z11GetFilenameh(1)|0);
+      $Result = $82;
+      $83 = ($82|0)!=(0);
+      if ($83) {
+       label = 35;
+       break L27;
       }
       break;
      }
@@ -13620,7 +13620,7 @@ function __Z12GetDirectivev() {
         $125 = ($124|0)!=(0);
         if ($125) {
          label = 56;
-         break L25;
+         break L27;
         }
         $127 = $Directive;
         $128 = (($127) + 1)<<24>>24;
@@ -13682,7 +13682,7 @@ function __Z12GetDirectivev() {
            $158 = ($157|0)==(126);
            if (!($158)) {
             label = 72;
-            break L25;
+            break L27;
            }
           }
          }
@@ -13693,14 +13693,14 @@ function __Z12GetDirectivev() {
        $161 = ($160|0)<(3);
        if ($161) {
         label = 72;
-        break L25;
+        break L27;
        }
        $162 = (__Z11GetFilenameh(0)|0);
        $Result = $162;
        $163 = ($162|0)!=(0);
        if ($163) {
         label = 70;
-        break L25;
+        break L27;
        }
       }
      }
@@ -13785,7 +13785,7 @@ function __Z12GetDirectivev() {
       break;
      }
      case 76: {
-      break L23;
+      break L24;
       break;
      }
     }
@@ -15740,66 +15740,6 @@ function __Z28ResolveCCDirectiveExpressionv() {
    $55 = HEAP32[$54>>2]|0;
    do {
     switch ($55|0) {
-    case 18:  {
-     $88 = $Idx;
-     $89 = $88&255;
-     $90 = (($89) - 2)|0;
-     $91 = (($Stack) + ($90<<2)|0);
-     $92 = HEAP32[$91>>2]|0;
-     $93 = $Idx;
-     $94 = $93&255;
-     $95 = (($94) - 1)|0;
-     $96 = (($Stack) + ($95<<2)|0);
-     $97 = HEAP32[$96>>2]|0;
-     $98 = Math_imul($92, $97)|0;
-     $99 = $98 & 65535;
-     $100 = $Idx;
-     $101 = $100&255;
-     $102 = (($101) - 2)|0;
-     $103 = (($Stack) + ($102<<2)|0);
-     HEAP32[$103>>2] = $99;
-     break;
-    }
-    case 29:  {
-     $248 = $Idx;
-     $249 = $248&255;
-     $250 = (($249) - 2)|0;
-     $251 = (($Stack) + ($250<<2)|0);
-     $252 = HEAP32[$251>>2]|0;
-     $253 = $Idx;
-     $254 = $253&255;
-     $255 = (($254) - 1)|0;
-     $256 = (($Stack) + ($255<<2)|0);
-     $257 = HEAP32[$256>>2]|0;
-     $258 = ($252|0)!=($257|0);
-     $259 = $258 ? 65535 : 0;
-     $260 = $Idx;
-     $261 = $260&255;
-     $262 = (($261) - 2)|0;
-     $263 = (($Stack) + ($262<<2)|0);
-     HEAP32[$263>>2] = $259;
-     break;
-    }
-    case 21:  {
-     $104 = $Idx;
-     $105 = $104&255;
-     $106 = (($105) - 2)|0;
-     $107 = (($Stack) + ($106<<2)|0);
-     $108 = HEAP32[$107>>2]|0;
-     $109 = $Idx;
-     $110 = $109&255;
-     $111 = (($110) - 1)|0;
-     $112 = (($Stack) + ($111<<2)|0);
-     $113 = HEAP32[$112>>2]|0;
-     $114 = (($108|0) / ($113|0))&-1;
-     $115 = $114 & 65535;
-     $116 = $Idx;
-     $117 = $116&255;
-     $118 = (($117) - 2)|0;
-     $119 = (($Stack) + ($118<<2)|0);
-     HEAP32[$119>>2] = $115;
-     break;
-    }
     case 16:  {
      $72 = $Idx;
      $73 = $72&255;
@@ -15820,84 +15760,22 @@ function __Z28ResolveCCDirectiveExpressionv() {
      HEAP32[$87>>2] = $83;
      break;
     }
-    case 27:  {
-     $216 = $Idx;
-     $217 = $216&255;
-     $218 = (($217) - 2)|0;
-     $219 = (($Stack) + ($218<<2)|0);
-     $220 = HEAP32[$219>>2]|0;
-     $221 = $Idx;
-     $222 = $221&255;
-     $223 = (($222) - 1)|0;
-     $224 = (($Stack) + ($223<<2)|0);
-     $225 = HEAP32[$224>>2]|0;
-     $226 = ($220|0)<=($225|0);
-     $227 = $226 ? 65535 : 0;
-     $228 = $Idx;
-     $229 = $228&255;
-     $230 = (($229) - 2)|0;
-     $231 = (($Stack) + ($230<<2)|0);
-     HEAP32[$231>>2] = $227;
-     break;
-    }
-    case 28:  {
-     $232 = $Idx;
-     $233 = $232&255;
-     $234 = (($233) - 2)|0;
-     $235 = (($Stack) + ($234<<2)|0);
-     $236 = HEAP32[$235>>2]|0;
-     $237 = $Idx;
-     $238 = $237&255;
-     $239 = (($238) - 1)|0;
-     $240 = (($Stack) + ($239<<2)|0);
-     $241 = HEAP32[$240>>2]|0;
-     $242 = ($236|0)==($241|0);
-     $243 = $242 ? 65535 : 0;
-     $244 = $Idx;
-     $245 = $244&255;
-     $246 = (($245) - 2)|0;
-     $247 = (($Stack) + ($246<<2)|0);
-     HEAP32[$247>>2] = $243;
-     break;
-    }
-    case 15:  {
-     $56 = $Idx;
-     $57 = $56&255;
-     $58 = (($57) - 2)|0;
-     $59 = (($Stack) + ($58<<2)|0);
-     $60 = HEAP32[$59>>2]|0;
-     $61 = $Idx;
-     $62 = $61&255;
-     $63 = (($62) - 1)|0;
-     $64 = (($Stack) + ($63<<2)|0);
-     $65 = HEAP32[$64>>2]|0;
-     $66 = (($60) + ($65))|0;
-     $67 = $66 & 65535;
-     $68 = $Idx;
-     $69 = $68&255;
-     $70 = (($69) - 2)|0;
-     $71 = (($Stack) + ($70<<2)|0);
-     HEAP32[$71>>2] = $67;
-     break;
-    }
-    case 11:  {
-     $168 = $Idx;
-     $169 = $168&255;
-     $170 = (($169) - 2)|0;
-     $171 = (($Stack) + ($170<<2)|0);
-     $172 = HEAP32[$171>>2]|0;
-     $173 = $Idx;
-     $174 = $173&255;
-     $175 = (($174) - 1)|0;
-     $176 = (($Stack) + ($175<<2)|0);
-     $177 = HEAP32[$176>>2]|0;
-     $178 = $172 | $177;
-     $179 = $178 & 65535;
-     $180 = $Idx;
-     $181 = $180&255;
-     $182 = (($181) - 2)|0;
-     $183 = (($Stack) + ($182<<2)|0);
-     HEAP32[$183>>2] = $179;
+    case 3:  {
+     $296 = $Idx;
+     $297 = $296&255;
+     $298 = (($297) - 1)|0;
+     $299 = (($Stack) + ($298<<2)|0);
+     $300 = HEAP32[$299>>2]|0;
+     $301 = (0 - ($300))|0;
+     $302 = $301 & 65535;
+     $303 = $Idx;
+     $304 = $303&255;
+     $305 = (($304) - 1)|0;
+     $306 = (($Stack) + ($305<<2)|0);
+     HEAP32[$306>>2] = $302;
+     $307 = $Idx;
+     $308 = (($307) + 1)<<24>>24;
+     $Idx = $308;
      break;
     }
     case 12:  {
@@ -15940,24 +15818,24 @@ function __Z28ResolveCCDirectiveExpressionv() {
      HEAP32[$215>>2] = $211;
      break;
     }
-    case 23:  {
-     $120 = $Idx;
-     $121 = $120&255;
-     $122 = (($121) - 2)|0;
-     $123 = (($Stack) + ($122<<2)|0);
-     $124 = HEAP32[$123>>2]|0;
-     $125 = $Idx;
-     $126 = $125&255;
-     $127 = (($126) - 1)|0;
-     $128 = (($Stack) + ($127<<2)|0);
-     $129 = HEAP32[$128>>2]|0;
-     $130 = $124 << $129;
-     $131 = $130 & 65535;
-     $132 = $Idx;
-     $133 = $132&255;
-     $134 = (($133) - 2)|0;
-     $135 = (($Stack) + ($134<<2)|0);
-     HEAP32[$135>>2] = $131;
+    case 27:  {
+     $216 = $Idx;
+     $217 = $216&255;
+     $218 = (($217) - 2)|0;
+     $219 = (($Stack) + ($218<<2)|0);
+     $220 = HEAP32[$219>>2]|0;
+     $221 = $Idx;
+     $222 = $221&255;
+     $223 = (($222) - 1)|0;
+     $224 = (($Stack) + ($223<<2)|0);
+     $225 = HEAP32[$224>>2]|0;
+     $226 = ($220|0)<=($225|0);
+     $227 = $226 ? 65535 : 0;
+     $228 = $Idx;
+     $229 = $228&255;
+     $230 = (($229) - 2)|0;
+     $231 = (($Stack) + ($230<<2)|0);
+     HEAP32[$231>>2] = $227;
      break;
     }
     case 24:  {
@@ -15980,44 +15858,84 @@ function __Z28ResolveCCDirectiveExpressionv() {
      HEAP32[$151>>2] = $147;
      break;
     }
-    case 10:  {
-     $152 = $Idx;
-     $153 = $152&255;
-     $154 = (($153) - 2)|0;
-     $155 = (($Stack) + ($154<<2)|0);
-     $156 = HEAP32[$155>>2]|0;
-     $157 = $Idx;
-     $158 = $157&255;
-     $159 = (($158) - 1)|0;
-     $160 = (($Stack) + ($159<<2)|0);
-     $161 = HEAP32[$160>>2]|0;
-     $162 = $156 & $161;
-     $163 = $162 & 65535;
-     $164 = $Idx;
-     $165 = $164&255;
-     $166 = (($165) - 2)|0;
-     $167 = (($Stack) + ($166<<2)|0);
-     HEAP32[$167>>2] = $163;
+    case 11:  {
+     $168 = $Idx;
+     $169 = $168&255;
+     $170 = (($169) - 2)|0;
+     $171 = (($Stack) + ($170<<2)|0);
+     $172 = HEAP32[$171>>2]|0;
+     $173 = $Idx;
+     $174 = $173&255;
+     $175 = (($174) - 1)|0;
+     $176 = (($Stack) + ($175<<2)|0);
+     $177 = HEAP32[$176>>2]|0;
+     $178 = $172 | $177;
+     $179 = $178 & 65535;
+     $180 = $Idx;
+     $181 = $180&255;
+     $182 = (($181) - 2)|0;
+     $183 = (($Stack) + ($182<<2)|0);
+     HEAP32[$183>>2] = $179;
      break;
     }
-    case 30:  {
-     $264 = $Idx;
-     $265 = $264&255;
-     $266 = (($265) - 2)|0;
-     $267 = (($Stack) + ($266<<2)|0);
-     $268 = HEAP32[$267>>2]|0;
-     $269 = $Idx;
-     $270 = $269&255;
-     $271 = (($270) - 1)|0;
-     $272 = (($Stack) + ($271<<2)|0);
-     $273 = HEAP32[$272>>2]|0;
-     $274 = ($268|0)>($273|0);
-     $275 = $274 ? 65535 : 0;
-     $276 = $Idx;
-     $277 = $276&255;
-     $278 = (($277) - 2)|0;
-     $279 = (($Stack) + ($278<<2)|0);
-     HEAP32[$279>>2] = $275;
+    case 15:  {
+     $56 = $Idx;
+     $57 = $56&255;
+     $58 = (($57) - 2)|0;
+     $59 = (($Stack) + ($58<<2)|0);
+     $60 = HEAP32[$59>>2]|0;
+     $61 = $Idx;
+     $62 = $61&255;
+     $63 = (($62) - 1)|0;
+     $64 = (($Stack) + ($63<<2)|0);
+     $65 = HEAP32[$64>>2]|0;
+     $66 = (($60) + ($65))|0;
+     $67 = $66 & 65535;
+     $68 = $Idx;
+     $69 = $68&255;
+     $70 = (($69) - 2)|0;
+     $71 = (($Stack) + ($70<<2)|0);
+     HEAP32[$71>>2] = $67;
+     break;
+    }
+    case 28:  {
+     $232 = $Idx;
+     $233 = $232&255;
+     $234 = (($233) - 2)|0;
+     $235 = (($Stack) + ($234<<2)|0);
+     $236 = HEAP32[$235>>2]|0;
+     $237 = $Idx;
+     $238 = $237&255;
+     $239 = (($238) - 1)|0;
+     $240 = (($Stack) + ($239<<2)|0);
+     $241 = HEAP32[$240>>2]|0;
+     $242 = ($236|0)==($241|0);
+     $243 = $242 ? 65535 : 0;
+     $244 = $Idx;
+     $245 = $244&255;
+     $246 = (($245) - 2)|0;
+     $247 = (($Stack) + ($246<<2)|0);
+     HEAP32[$247>>2] = $243;
+     break;
+    }
+    case 29:  {
+     $248 = $Idx;
+     $249 = $248&255;
+     $250 = (($249) - 2)|0;
+     $251 = (($Stack) + ($250<<2)|0);
+     $252 = HEAP32[$251>>2]|0;
+     $253 = $Idx;
+     $254 = $253&255;
+     $255 = (($254) - 1)|0;
+     $256 = (($Stack) + ($255<<2)|0);
+     $257 = HEAP32[$256>>2]|0;
+     $258 = ($252|0)!=($257|0);
+     $259 = $258 ? 65535 : 0;
+     $260 = $Idx;
+     $261 = $260&255;
+     $262 = (($261) - 2)|0;
+     $263 = (($Stack) + ($262<<2)|0);
+     HEAP32[$263>>2] = $259;
      break;
     }
     case 31:  {
@@ -16040,22 +15958,104 @@ function __Z28ResolveCCDirectiveExpressionv() {
      HEAP32[$295>>2] = $291;
      break;
     }
-    case 3:  {
-     $296 = $Idx;
-     $297 = $296&255;
-     $298 = (($297) - 1)|0;
-     $299 = (($Stack) + ($298<<2)|0);
-     $300 = HEAP32[$299>>2]|0;
-     $301 = (0 - ($300))|0;
-     $302 = $301 & 65535;
-     $303 = $Idx;
-     $304 = $303&255;
-     $305 = (($304) - 1)|0;
-     $306 = (($Stack) + ($305<<2)|0);
-     HEAP32[$306>>2] = $302;
-     $307 = $Idx;
-     $308 = (($307) + 1)<<24>>24;
-     $Idx = $308;
+    case 30:  {
+     $264 = $Idx;
+     $265 = $264&255;
+     $266 = (($265) - 2)|0;
+     $267 = (($Stack) + ($266<<2)|0);
+     $268 = HEAP32[$267>>2]|0;
+     $269 = $Idx;
+     $270 = $269&255;
+     $271 = (($270) - 1)|0;
+     $272 = (($Stack) + ($271<<2)|0);
+     $273 = HEAP32[$272>>2]|0;
+     $274 = ($268|0)>($273|0);
+     $275 = $274 ? 65535 : 0;
+     $276 = $Idx;
+     $277 = $276&255;
+     $278 = (($277) - 2)|0;
+     $279 = (($Stack) + ($278<<2)|0);
+     HEAP32[$279>>2] = $275;
+     break;
+    }
+    case 10:  {
+     $152 = $Idx;
+     $153 = $152&255;
+     $154 = (($153) - 2)|0;
+     $155 = (($Stack) + ($154<<2)|0);
+     $156 = HEAP32[$155>>2]|0;
+     $157 = $Idx;
+     $158 = $157&255;
+     $159 = (($158) - 1)|0;
+     $160 = (($Stack) + ($159<<2)|0);
+     $161 = HEAP32[$160>>2]|0;
+     $162 = $156 & $161;
+     $163 = $162 & 65535;
+     $164 = $Idx;
+     $165 = $164&255;
+     $166 = (($165) - 2)|0;
+     $167 = (($Stack) + ($166<<2)|0);
+     HEAP32[$167>>2] = $163;
+     break;
+    }
+    case 23:  {
+     $120 = $Idx;
+     $121 = $120&255;
+     $122 = (($121) - 2)|0;
+     $123 = (($Stack) + ($122<<2)|0);
+     $124 = HEAP32[$123>>2]|0;
+     $125 = $Idx;
+     $126 = $125&255;
+     $127 = (($126) - 1)|0;
+     $128 = (($Stack) + ($127<<2)|0);
+     $129 = HEAP32[$128>>2]|0;
+     $130 = $124 << $129;
+     $131 = $130 & 65535;
+     $132 = $Idx;
+     $133 = $132&255;
+     $134 = (($133) - 2)|0;
+     $135 = (($Stack) + ($134<<2)|0);
+     HEAP32[$135>>2] = $131;
+     break;
+    }
+    case 21:  {
+     $104 = $Idx;
+     $105 = $104&255;
+     $106 = (($105) - 2)|0;
+     $107 = (($Stack) + ($106<<2)|0);
+     $108 = HEAP32[$107>>2]|0;
+     $109 = $Idx;
+     $110 = $109&255;
+     $111 = (($110) - 1)|0;
+     $112 = (($Stack) + ($111<<2)|0);
+     $113 = HEAP32[$112>>2]|0;
+     $114 = (($108|0) / ($113|0))&-1;
+     $115 = $114 & 65535;
+     $116 = $Idx;
+     $117 = $116&255;
+     $118 = (($117) - 2)|0;
+     $119 = (($Stack) + ($118<<2)|0);
+     HEAP32[$119>>2] = $115;
+     break;
+    }
+    case 18:  {
+     $88 = $Idx;
+     $89 = $88&255;
+     $90 = (($89) - 2)|0;
+     $91 = (($Stack) + ($90<<2)|0);
+     $92 = HEAP32[$91>>2]|0;
+     $93 = $Idx;
+     $94 = $93&255;
+     $95 = (($94) - 1)|0;
+     $96 = (($Stack) + ($95<<2)|0);
+     $97 = HEAP32[$96>>2]|0;
+     $98 = Math_imul($92, $97)|0;
+     $99 = $98 & 65535;
+     $100 = $Idx;
+     $101 = $100&255;
+     $102 = (($101) - 2)|0;
+     $103 = (($Stack) + ($102<<2)|0);
+     HEAP32[$103>>2] = $99;
      break;
     }
     case 2:  {
@@ -16340,15 +16340,15 @@ function __Z15ResolveConstanthhPh($LastPass,$CCDefine,$Resolved) {
   $67 = $Operation;
   do {
    switch ($67|0) {
-   case 23:  {
-    $68 = $Value;
-    $69 = $68&65535;
-    $70 = (($Element) + 4|0);
-    $71 = HEAP16[$70>>1]|0;
-    $72 = $71&65535;
-    $73 = $69 << $72;
-    $74 = $73&65535;
-    $Value = $74;
+   case 15:  {
+    $103 = $Value;
+    $104 = $103&65535;
+    $105 = (($Element) + 4|0);
+    $106 = HEAP16[$105>>1]|0;
+    $107 = $106&65535;
+    $108 = (($104) + ($107))|0;
+    $109 = $108&65535;
+    $Value = $109;
     break;
    }
    case 24:  {
@@ -16362,28 +16362,6 @@ function __Z15ResolveConstanthhPh($LastPass,$CCDefine,$Resolved) {
     $Value = $81;
     break;
    }
-   case 10:  {
-    $82 = $Value;
-    $83 = $82&65535;
-    $84 = (($Element) + 4|0);
-    $85 = HEAP16[$84>>1]|0;
-    $86 = $85&65535;
-    $87 = $83 & $86;
-    $88 = $87&65535;
-    $Value = $88;
-    break;
-   }
-   case 11:  {
-    $89 = $Value;
-    $90 = $89&65535;
-    $91 = (($Element) + 4|0);
-    $92 = HEAP16[$91>>1]|0;
-    $93 = $92&65535;
-    $94 = $90 | $93;
-    $95 = $94&65535;
-    $Value = $95;
-    break;
-   }
    case 12:  {
     $96 = $Value;
     $97 = $96&65535;
@@ -16395,15 +16373,15 @@ function __Z15ResolveConstanthhPh($LastPass,$CCDefine,$Resolved) {
     $Value = $102;
     break;
    }
-   case 15:  {
-    $103 = $Value;
-    $104 = $103&65535;
-    $105 = (($Element) + 4|0);
-    $106 = HEAP16[$105>>1]|0;
-    $107 = $106&65535;
-    $108 = (($104) + ($107))|0;
-    $109 = $108&65535;
-    $Value = $109;
+   case 10:  {
+    $82 = $Value;
+    $83 = $82&65535;
+    $84 = (($Element) + 4|0);
+    $85 = HEAP16[$84>>1]|0;
+    $86 = $85&65535;
+    $87 = $83 & $86;
+    $88 = $87&65535;
+    $Value = $88;
     break;
    }
    case 16:  {
@@ -16415,17 +16393,6 @@ function __Z15ResolveConstanthhPh($LastPass,$CCDefine,$Resolved) {
     $115 = (($111) - ($114))|0;
     $116 = $115&65535;
     $Value = $116;
-    break;
-   }
-   case 18:  {
-    $117 = $Value;
-    $118 = $117&65535;
-    $119 = (($Element) + 4|0);
-    $120 = HEAP16[$119>>1]|0;
-    $121 = $120&65535;
-    $122 = Math_imul($118, $121)|0;
-    $123 = $122&65535;
-    $Value = $123;
     break;
    }
    case 21:  {
@@ -16445,6 +16412,39 @@ function __Z15ResolveConstanthhPh($LastPass,$CCDefine,$Resolved) {
     $133 = (($129|0) / ($132|0))&-1;
     $134 = $133&65535;
     $Value = $134;
+    break;
+   }
+   case 23:  {
+    $68 = $Value;
+    $69 = $68&65535;
+    $70 = (($Element) + 4|0);
+    $71 = HEAP16[$70>>1]|0;
+    $72 = $71&65535;
+    $73 = $69 << $72;
+    $74 = $73&65535;
+    $Value = $74;
+    break;
+   }
+   case 11:  {
+    $89 = $Value;
+    $90 = $89&65535;
+    $91 = (($Element) + 4|0);
+    $92 = HEAP16[$91>>1]|0;
+    $93 = $92&65535;
+    $94 = $90 | $93;
+    $95 = $94&65535;
+    $Value = $95;
+    break;
+   }
+   case 18:  {
+    $117 = $Value;
+    $118 = $117&65535;
+    $119 = (($Element) + 4|0);
+    $120 = HEAP16[$119>>1]|0;
+    $121 = $120&65535;
+    $122 = Math_imul($118, $121)|0;
+    $123 = $122&65535;
+    $Value = $123;
     break;
    }
    default: {
@@ -25433,11 +25433,6 @@ function __Z12NestingErrorv() {
  $4 = (238784 + (($3*48)|0)|0);
  $5 = HEAP32[$4>>2]|0;
  switch ($5|0) {
- case 6:  {
-  $7 = (__Z5Error10TErrorCode(80)|0);
-  $0 = $7;
-  break;
- }
  case 8:  {
   $9 = (__Z5Error10TErrorCode(86)|0);
   $0 = $9;
@@ -25451,6 +25446,11 @@ function __Z12NestingErrorv() {
  case 5: case 4: case 2: case 0:  {
   $6 = (__Z5Error10TErrorCode(65)|0);
   $0 = $6;
+  break;
+ }
+ case 6:  {
+  $7 = (__Z5Error10TErrorCode(80)|0);
+  $0 = $7;
   break;
  }
  default: {
@@ -25562,6 +25562,9 @@ function __Z21CompileOutputSequencev() {
   }
   $3 = $State;
   switch ($3|0) {
+  case 8:  {
+   break;
+  }
   case 3:  {
    $20 = (__Z13CheckQuestionv()|0);
    $21 = ($20<<24>>24)!=(0);
@@ -25635,61 +25638,25 @@ function __Z21CompileOutputSequencev() {
    $State = 7;
    break;
   }
-  case 6:  {
+  case 1:  {
+   $7 = (__Z11GetQuestionv()|0);
+   $Result = $7;
+   $8 = ($7|0)!=(0);
+   if ($8) {
+    label = 13;
+    break L1;
+   }
    $ExpFlag = 1;
-   $98 = $ASCFlag;
-   $99 = (__Z9EnterTexth($98)|0);
-   $Result = $99;
-   $100 = ($99|0)!=(0);
-   if ($100) {
-    label = 69;
+   $ASCFlag = 1;
+   $10 = $ASCFlag;
+   $11 = (__Z9EnterTexth($10)|0);
+   $Result = $11;
+   $12 = ($11|0)!=(0);
+   if ($12) {
+    label = 15;
     break L1;
    }
-   $102 = (__Z13EnterConstantth(438,0)|0);
-   $Result = $102;
-   $103 = ($102|0)!=(0);
-   if ($103) {
-    label = 71;
-    break L1;
-   }
-   HEAP8[241856>>0] = 1;
-   $105 = (__Z23GetValueEnterExpressionhh(1,0)|0);
-   $Result = $105;
-   $106 = ($105|0)!=(0);
-   if ($106) {
-    label = 73;
-    break L1;
-   }
-   $108 = (__Z11EnterEEPROMht(1,0)|0);
-   $Result = $108;
-   $109 = ($108|0)!=(0);
-   if ($109) {
-    label = 75;
-    break L1;
-   }
-   $State = 7;
-   break;
-  }
-  case 2:  {
-   HEAP8[241856>>0] = 1;
-   $14 = (__Z23GetValueEnterExpressionhh(0,0)|0);
-   $Result = $14;
-   $15 = ($14|0)!=(0);
-   if ($15) {
-    label = 18;
-    break L1;
-   }
-   $17 = (__Z11EnterEEPROMht(1,0)|0);
-   $Result = $17;
-   $18 = ($17|0)!=(0);
-   if ($18) {
-    label = 20;
-    break L1;
-   }
-   $State = 7;
-   break;
-  }
-  case 8:  {
+   $State = 2;
    break;
   }
   case 0:  {
@@ -25698,24 +25665,24 @@ function __Z21CompileOutputSequencev() {
    (__Z10GetElementP12TElementList($Element)|0);
    $4 = HEAP32[$Element>>2]|0;
    switch ($4|0) {
-   case 15:  {
-    $State = 6;
+   case 30:  {
+    $State = 1;
     break;
    }
    case 35:  {
     $State = 3;
     break;
    }
-   case 32:  {
-    $State = 4;
+   case 15:  {
+    $State = 6;
     break;
    }
    case 31:  {
     $State = 5;
     break;
    }
-   case 30:  {
-    $State = 1;
+   case 32:  {
+    $State = 4;
     break;
    }
    default: {
@@ -25725,6 +25692,65 @@ function __Z21CompileOutputSequencev() {
     $State = 2;
    }
    }
+   break;
+  }
+  case 5:  {
+   $68 = (__Z13CheckQuestionv()|0);
+   $69 = ($68<<24>>24)!=(0);
+   if ($69) {
+    $ExpFlag = 1;
+    $70 = $ASCFlag;
+    $71 = (__Z9EnterTexth($70)|0);
+    $Result = $71;
+    $72 = ($71|0)!=(0);
+    if ($72) {
+     label = 55;
+     break L1;
+    }
+   }
+   $74 = $ExpFlag;
+   $75 = ($74<<24>>24)!=(0);
+   if ($75) {
+    $76 = (($Element) + 4|0);
+    $77 = HEAP16[$76>>1]|0;
+    $78 = $77&65535;
+    $79 = $78 & 15;
+    $80 = ($79|0)!=(6);
+    if ($80) {
+     $81 = (($Element) + 4|0);
+     $82 = HEAP16[$81>>1]|0;
+     $83 = $82&65535;
+     $84 = $83 | 2048;
+     $85 = $84&65535;
+     $86 = (($Element) + 4|0);
+     HEAP16[$86>>1] = $85;
+    }
+   }
+   $87 = (($Element) + 4|0);
+   $88 = HEAP16[$87>>1]|0;
+   $89 = (__Z13EnterConstantth($88,0)|0);
+   $Result = $89;
+   $90 = ($89|0)!=(0);
+   if ($90) {
+    label = 62;
+    break L1;
+   }
+   HEAP8[241856>>0] = 1;
+   $92 = (__Z23GetValueEnterExpressionhh(1,0)|0);
+   $Result = $92;
+   $93 = ($92|0)!=(0);
+   if ($93) {
+    label = 64;
+    break L1;
+   }
+   $95 = (__Z11EnterEEPROMht(1,0)|0);
+   $Result = $95;
+   $96 = ($95|0)!=(0);
+   if ($96) {
+    label = 66;
+    break L1;
+   }
+   $State = 7;
    break;
   }
   case 7:  {
@@ -25784,25 +25810,23 @@ function __Z21CompileOutputSequencev() {
    }
    break;
   }
-  case 1:  {
-   $7 = (__Z11GetQuestionv()|0);
-   $Result = $7;
-   $8 = ($7|0)!=(0);
-   if ($8) {
-    label = 13;
+  case 2:  {
+   HEAP8[241856>>0] = 1;
+   $14 = (__Z23GetValueEnterExpressionhh(0,0)|0);
+   $Result = $14;
+   $15 = ($14|0)!=(0);
+   if ($15) {
+    label = 18;
     break L1;
    }
-   $ExpFlag = 1;
-   $ASCFlag = 1;
-   $10 = $ASCFlag;
-   $11 = (__Z9EnterTexth($10)|0);
-   $Result = $11;
-   $12 = ($11|0)!=(0);
-   if ($12) {
-    label = 15;
+   $17 = (__Z11EnterEEPROMht(1,0)|0);
+   $Result = $17;
+   $18 = ($17|0)!=(0);
+   if ($18) {
+    label = 20;
     break L1;
    }
-   $State = 2;
+   $State = 7;
    break;
   }
   case 4:  {
@@ -25846,60 +25870,36 @@ function __Z21CompileOutputSequencev() {
    $State = 7;
    break;
   }
-  case 5:  {
-   $68 = (__Z13CheckQuestionv()|0);
-   $69 = ($68<<24>>24)!=(0);
-   if ($69) {
-    $ExpFlag = 1;
-    $70 = $ASCFlag;
-    $71 = (__Z9EnterTexth($70)|0);
-    $Result = $71;
-    $72 = ($71|0)!=(0);
-    if ($72) {
-     label = 55;
-     break L1;
-    }
+  case 6:  {
+   $ExpFlag = 1;
+   $98 = $ASCFlag;
+   $99 = (__Z9EnterTexth($98)|0);
+   $Result = $99;
+   $100 = ($99|0)!=(0);
+   if ($100) {
+    label = 69;
+    break L1;
    }
-   $74 = $ExpFlag;
-   $75 = ($74<<24>>24)!=(0);
-   if ($75) {
-    $76 = (($Element) + 4|0);
-    $77 = HEAP16[$76>>1]|0;
-    $78 = $77&65535;
-    $79 = $78 & 15;
-    $80 = ($79|0)!=(6);
-    if ($80) {
-     $81 = (($Element) + 4|0);
-     $82 = HEAP16[$81>>1]|0;
-     $83 = $82&65535;
-     $84 = $83 | 2048;
-     $85 = $84&65535;
-     $86 = (($Element) + 4|0);
-     HEAP16[$86>>1] = $85;
-    }
-   }
-   $87 = (($Element) + 4|0);
-   $88 = HEAP16[$87>>1]|0;
-   $89 = (__Z13EnterConstantth($88,0)|0);
-   $Result = $89;
-   $90 = ($89|0)!=(0);
-   if ($90) {
-    label = 62;
+   $102 = (__Z13EnterConstantth(438,0)|0);
+   $Result = $102;
+   $103 = ($102|0)!=(0);
+   if ($103) {
+    label = 71;
     break L1;
    }
    HEAP8[241856>>0] = 1;
-   $92 = (__Z23GetValueEnterExpressionhh(1,0)|0);
-   $Result = $92;
-   $93 = ($92|0)!=(0);
-   if ($93) {
-    label = 64;
+   $105 = (__Z23GetValueEnterExpressionhh(1,0)|0);
+   $Result = $105;
+   $106 = ($105|0)!=(0);
+   if ($106) {
+    label = 73;
     break L1;
    }
-   $95 = (__Z11EnterEEPROMht(1,0)|0);
-   $Result = $95;
-   $96 = ($95|0)!=(0);
-   if ($96) {
-    label = 66;
+   $108 = (__Z11EnterEEPROMht(1,0)|0);
+   $Result = $108;
+   $109 = ($108|0)!=(0);
+   if ($109) {
+    label = 75;
     break L1;
    }
    $State = 7;
@@ -26100,113 +26100,6 @@ function __Z20CompileInputSequencev() {
   }
   $3 = $State;
   switch ($3|0) {
-  case 1:  {
-   $50 = (__Z13EnterConstantth(4096,1)|0);
-   $Result = $50;
-   $51 = ($50|0)!=(0);
-   if ($51) {
-    label = 39;
-    break L1;
-   }
-   HEAP8[241856>>0] = 1;
-   $53 = (__Z23GetValueEnterExpressionhh(1,0)|0);
-   $Result = $53;
-   $54 = ($53|0)!=(0);
-   if ($54) {
-    label = 41;
-    break L1;
-   }
-   $56 = (__Z11EnterEEPROMht(1,0)|0);
-   $Result = $56;
-   $57 = ($56|0)!=(0);
-   if ($57) {
-    label = 43;
-    break L1;
-   }
-   $State = 7;
-   break;
-  }
-  case 8:  {
-   break;
-  }
-  case 0:  {
-   (__Z10GetElementP12TElementList($Element)|0);
-   $4 = HEAP32[$Element>>2]|0;
-   switch ($4|0) {
-   case 34:  {
-    $State = 1;
-    break;
-   }
-   case 33:  {
-    $State = 3;
-    break;
-   }
-   case 35:  {
-    $State = 2;
-    break;
-   }
-   case 31: case 8:  {
-    $State = 6;
-    break;
-   }
-   case 36:  {
-    $State = 5;
-    break;
-   }
-   case 37:  {
-    $State = 4;
-    break;
-   }
-   default: {
-    $5 = HEAP16[238720>>1]|0;
-    $6 = (($5) + -1)<<16>>16;
-    HEAP16[238720>>1] = $6;
-    $7 = (__Z11EnterEEPROMht(1,0)|0);
-    $Result = $7;
-    $8 = ($7|0)!=(0);
-    if ($8) {
-     label = 12;
-     break L1;
-    }
-    HEAP8[241856>>0] = 1;
-    $10 = (__Z23GetWriteEnterExpressionv()|0);
-    $Result = $10;
-    $11 = ($10|0)!=(0);
-    if ($11) {
-     label = 14;
-     break L1;
-    }
-    $State = 7;
-   }
-   }
-   break;
-  }
-  case 3:  {
-   $59 = (__Z13EnterConstantth(1024,1)|0);
-   $Result = $59;
-   $60 = ($59|0)!=(0);
-   if ($60) {
-    label = 46;
-    break L1;
-   }
-   HEAP8[241856>>0] = 1;
-   $62 = (__Z23GetValueEnterExpressionhh(1,0)|0);
-   $Result = $62;
-   $63 = ($62|0)!=(0);
-   if ($63) {
-    label = 48;
-    break L1;
-   }
-   $65 = (__Z11EnterEEPROMht(1,0)|0);
-   $Result = $65;
-   $66 = ($65|0)!=(0);
-   if ($66) {
-    label = 50;
-    break L1;
-   }
-   $State = 7;
-   break;
-  }
   case 2:  {
    $13 = (__Z11EnterEEPROMht(1,1)|0);
    $Result = $13;
@@ -26324,25 +26217,30 @@ function __Z20CompileInputSequencev() {
    $State = 7;
    break;
   }
-  case 7:  {
-   (__Z14PreviewElementP12TElementList($Preview)|0);
-   $189 = HEAP32[$Preview>>2]|0;
-   $190 = ($189|0)==(14);
-   if ($190) {
-    $191 = HEAP16[238720>>1]|0;
-    $192 = (($191) + 1)<<16>>16;
-    HEAP16[238720>>1] = $192;
-    $193 = (__Z11EnterEEPROMht(1,1)|0);
-    $Result = $193;
-    $194 = ($193|0)!=(0);
-    if ($194) {
-     label = 108;
-     break L1;
-    }
-    $State = 0;
-   } else {
-    $State = 8;
+  case 3:  {
+   $59 = (__Z13EnterConstantth(1024,1)|0);
+   $Result = $59;
+   $60 = ($59|0)!=(0);
+   if ($60) {
+    label = 46;
+    break L1;
    }
+   HEAP8[241856>>0] = 1;
+   $62 = (__Z23GetValueEnterExpressionhh(1,0)|0);
+   $Result = $62;
+   $63 = ($62|0)!=(0);
+   if ($63) {
+    label = 48;
+    break L1;
+   }
+   $65 = (__Z11EnterEEPROMht(1,0)|0);
+   $Result = $65;
+   $66 = ($65|0)!=(0);
+   if ($66) {
+    label = 50;
+    break L1;
+   }
+   $State = 7;
    break;
   }
   case 5:  {
@@ -26490,6 +26388,30 @@ function __Z20CompileInputSequencev() {
    $State = 7;
    break;
   }
+  case 7:  {
+   (__Z14PreviewElementP12TElementList($Preview)|0);
+   $189 = HEAP32[$Preview>>2]|0;
+   $190 = ($189|0)==(14);
+   if ($190) {
+    $191 = HEAP16[238720>>1]|0;
+    $192 = (($191) + 1)<<16>>16;
+    HEAP16[238720>>1] = $192;
+    $193 = (__Z11EnterEEPROMht(1,1)|0);
+    $Result = $193;
+    $194 = ($193|0)!=(0);
+    if ($194) {
+     label = 108;
+     break L1;
+    }
+    $State = 0;
+   } else {
+    $State = 8;
+   }
+   break;
+  }
+  case 8:  {
+   break;
+  }
   case 4:  {
    $68 = (__Z15GetByteVariableP12TElementList($Element)|0);
    $Result = $68;
@@ -26549,6 +26471,84 @@ function __Z20CompileInputSequencev() {
    $98 = ($97|0)!=(0);
    if ($98) {
     label = 66;
+    break L1;
+   }
+   $State = 7;
+   break;
+  }
+  case 0:  {
+   (__Z10GetElementP12TElementList($Element)|0);
+   $4 = HEAP32[$Element>>2]|0;
+   switch ($4|0) {
+   case 34:  {
+    $State = 1;
+    break;
+   }
+   case 36:  {
+    $State = 5;
+    break;
+   }
+   case 33:  {
+    $State = 3;
+    break;
+   }
+   case 37:  {
+    $State = 4;
+    break;
+   }
+   case 35:  {
+    $State = 2;
+    break;
+   }
+   case 31: case 8:  {
+    $State = 6;
+    break;
+   }
+   default: {
+    $5 = HEAP16[238720>>1]|0;
+    $6 = (($5) + -1)<<16>>16;
+    HEAP16[238720>>1] = $6;
+    $7 = (__Z11EnterEEPROMht(1,0)|0);
+    $Result = $7;
+    $8 = ($7|0)!=(0);
+    if ($8) {
+     label = 12;
+     break L1;
+    }
+    HEAP8[241856>>0] = 1;
+    $10 = (__Z23GetWriteEnterExpressionv()|0);
+    $Result = $10;
+    $11 = ($10|0)!=(0);
+    if ($11) {
+     label = 14;
+     break L1;
+    }
+    $State = 7;
+   }
+   }
+   break;
+  }
+  case 1:  {
+   $50 = (__Z13EnterConstantth(4096,1)|0);
+   $Result = $50;
+   $51 = ($50|0)!=(0);
+   if ($51) {
+    label = 39;
+    break L1;
+   }
+   HEAP8[241856>>0] = 1;
+   $53 = (__Z23GetValueEnterExpressionhh(1,0)|0);
+   $Result = $53;
+   $54 = ($53|0)!=(0);
+   if ($54) {
+    label = 41;
+    break L1;
+   }
+   $56 = (__Z11EnterEEPROMht(1,0)|0);
+   $Result = $56;
+   $57 = ($56|0)!=(0);
+   if ($57) {
+    label = 43;
     break L1;
    }
    $State = 7;
@@ -27903,7 +27903,7 @@ function _malloc($bytes) {
      $275 = ((263152 + ($idx$0$i<<2)|0) + 304|0);
      $276 = HEAP32[$275>>2]|0;
      $277 = ($276|0)==(0|0);
-     L9: do {
+     L126: do {
       if ($277) {
        $rsize$2$i = $249;$t$1$i = 0;$v$2$i = 0;
       } else {
@@ -27927,7 +27927,7 @@ function _malloc($bytes) {
          $288 = ($285|0)==($246|0);
          if ($288) {
           $rsize$2$i = $286;$t$1$i = $t$0$i14;$v$2$i = $t$0$i14;
-          break L9;
+          break L126;
          } else {
           $rsize$1$i = $286;$v$1$i = $t$0$i14;
          }
@@ -28211,7 +28211,7 @@ function _malloc($bytes) {
         }
        } while(0);
        $410 = ($rsize$3$lcssa$i>>>0)<(16);
-       L87: do {
+       L204: do {
         if ($410) {
          $411 = (($rsize$3$lcssa$i) + ($246))|0;
          $412 = $411 | 3;
@@ -28350,7 +28350,7 @@ function _malloc($bytes) {
          $480 = HEAP32[$479>>2]|0;
          $481 = $480 & -8;
          $482 = ($481|0)==($rsize$3$lcssa$i|0);
-         L108: do {
+         L225: do {
           if ($482) {
            $T$0$lcssa$i = $475;
           } else {
@@ -28371,7 +28371,7 @@ function _malloc($bytes) {
             $490 = ($489|0)==($rsize$3$lcssa$i|0);
             if ($490) {
              $T$0$lcssa$i = $487;
-             break L108;
+             break L225;
             } else {
              $K12$027$i = $485;$T$026$i = $487;
             }
@@ -28392,7 +28392,7 @@ function _malloc($bytes) {
             $$sum13$i = (($246) + 8)|0;
             $498 = (($v$3$lcssa$i) + ($$sum13$i)|0);
             HEAP32[$498>>2] = $348;
-            break L87;
+            break L204;
            }
           }
          } while(0);
@@ -31100,6 +31100,7 @@ run();
 
 /*global Module: false */
 
+//The value returned is in the format: XYY ;where X is the major version number and Y is the minor. For example, if the Version function returned 116, that indicates the version of the tokenizer is 1.16. If Version returned 123, that would indicate the tokenizer is version 1.23
 function version(){
   return Module.ccall('Version', 'number');
 }
@@ -31159,7 +31160,12 @@ function parse(resultBuffer){
   return TModuleRec;
 }
 
-function compile(program, directivesOnly, parseStampDirective){
+//program String, Source code
+//directivesOnly Boolean, provides an option of only tokenizing the “compiler directives” from the source code, rather than the entire source. This option is helpful when the calling program needs to determine only the target module, serial port or project files that may be specified by the PBASIC source code.
+//targetModule Boolean, provides an option of parsing the Stamp directive from the source code, rather than accepting a value in the TargetModule field of the TModuleRec structure. OPTIONAL. If not provided a valid directive must be found in the Source string.
+function compile(program, directivesOnly, targetModule){
+
+  var parseStampDirective = targetModule ? false : true;
 
   // Allocate space for string and extra '0' at the end
   var buffer = Module._malloc(program.length + 1);
@@ -31170,6 +31176,7 @@ function compile(program, directivesOnly, parseStampDirective){
   //sizeof struct in c was 6508
   var data = new Uint8Array(6508);
 
+  data[9] = targetModule | 0;
   data[88] = program.length;
 
   // Get data byte size, allocate memory on Emscripten heap, and get pointer
