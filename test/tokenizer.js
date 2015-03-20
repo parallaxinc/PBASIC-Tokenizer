@@ -27,9 +27,9 @@ describe('tokenizer', function(){
     PacketBuffer = Buffer.concat([PacketBuffer, new Buffer([0x34, 0x00, 0x35, 0x00, 0x36, 0x00, 0x37, 0x00, 0x38, 0x00, 0x39, 0x00, 0x31, 0x30, 0x00, 0x31, 0x38, 0x00])]);
 
     var TModuleRec = bs2tokenize.testRecAlignment();
-    expect(TModuleRec.Succeeded).toEqual(0);
+    expect(TModuleRec.Succeeded).toEqual(false);
     expect(TModuleRec.Error).toEqual('');
-    expect(TModuleRec.DebugFlag).toEqual(1);
+    expect(TModuleRec.DebugFlag).toEqual(true);
     expect(TModuleRec.TargetModule).toEqual(2);
     expect(TModuleRec.TargetStart).toEqual(3);
     expect(TModuleRec.ProjectFiles).toEqual(['4', '5', '6', '7', '8', '9', '10']);
@@ -77,9 +77,9 @@ describe('tokenizer', function(){
 
     var TModuleRec = bs2tokenize.compile(program, false, true);
 
-    expect(TModuleRec.Succeeded).toEqual(1);
+    expect(TModuleRec.Succeeded).toEqual(true);
     expect(TModuleRec.Error).toEqual('');
-    expect(TModuleRec.DebugFlag).toEqual(0);
+    expect(TModuleRec.DebugFlag).toEqual(false);
     expect(TModuleRec.TargetModule).toEqual(2);
     expect(TModuleRec.TargetStart).toEqual(9);
     expect(TModuleRec.LanguageVersion).toEqual(200);
@@ -105,9 +105,9 @@ it('#returns an error string', function(done){
 
   var TModuleRec = bs2tokenize.compile(program, false, true);
 
-  expect(TModuleRec.Succeeded).toEqual(0);
+  expect(TModuleRec.Succeeded).toEqual(false);
   expect(TModuleRec.Error).toEqual('149-Expected a label, variable, or instruction');
-  expect(TModuleRec.DebugFlag).toEqual(0);
+  expect(TModuleRec.DebugFlag).toEqual(false);
   expect(TModuleRec.TargetModule).toEqual(2);
   expect(TModuleRec.TargetStart).toEqual(9);
   expect(TModuleRec.LanguageVersion).toEqual(200);

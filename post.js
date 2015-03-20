@@ -11,10 +11,10 @@ function get32(buffer, starting){
 function parse(resultBuffer){
 
   var TModuleRec = {
-    Succeeded: resultBuffer[0],
+    Succeeded: resultBuffer[0] === 1 ? true : false,
     //3 padding bytes
     Error: Module.Pointer_stringify(get32(resultBuffer, 4)),
-    DebugFlag: resultBuffer[8],
+    DebugFlag: resultBuffer[8] === 1 ? true : false,
     TargetModule: resultBuffer[9],
     //2 padding bytes
     TargetStart: get32(resultBuffer, 12),
