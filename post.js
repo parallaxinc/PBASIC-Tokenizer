@@ -1,14 +1,14 @@
 /*global Module: false */
 
-function version(cb){
-  cb(null, Module.ccall('Version', 'number'));
+function version(){
+  return Module.ccall('Version', 'number');
 }
 
 function get32(buffer, starting){
   return buffer[starting] + (buffer[starting + 1] << 8) + (buffer[starting + 2] << 16) + (buffer[starting + 3] << 24);
 }
 
-function compile(myString, cb){
+function compile(myString){
 
   // Allocate space for string and extra '0' at the end
   var buffer = Module._malloc(myString.length+1);
@@ -88,7 +88,7 @@ function compile(myString, cb){
   Module._free(dataHeap.byteOffset);
 
   //todo, incorrect compile gives error?
-  return cb(null, TModuleRec);
+  return TModuleRec;
 }
 
 module.exports = {
