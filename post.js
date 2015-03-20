@@ -36,6 +36,7 @@ function compile(myString, cb){
   var resultBuffer = new Buffer(result);
 
   var count = resultBuffer[4200];
+  count = count <= 128 ? count : 128;
 
   var TModuleRec = {
     Succeeded: resultBuffer[0],
