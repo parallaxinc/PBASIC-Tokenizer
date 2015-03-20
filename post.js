@@ -25,7 +25,7 @@ function parse(resultBuffer){
       Module.Pointer_stringify(get32(resultBuffer, 28)),
       Module.Pointer_stringify(get32(resultBuffer, 32)),
       Module.Pointer_stringify(get32(resultBuffer, 36)),
-      Module.Pointer_stringify(get32(resultBuffer, 40)),
+      Module.Pointer_stringify(get32(resultBuffer, 40))
     ],
     ProjectFilesStart: [
       get32(resultBuffer, 44),
@@ -59,7 +59,7 @@ function parse(resultBuffer){
   return TModuleRec;
 }
 
-function compile(myString){
+function compile(myString, directivesOnly, parseStampDirective){
 
   // Allocate space for string and extra '0' at the end
   var buffer = Module._malloc(myString.length+1);
@@ -80,7 +80,7 @@ function compile(myString){
   var dataHeap = new Uint8Array(Module.HEAPU8.buffer, dataPtr, nDataBytes);
   dataHeap.set(new Uint8Array(data.buffer));
 
-  Module.ccall('Compile', 'number', ['number', 'number', 'number', 'number', 'number'], [dataHeap.byteOffset, buffer, 0, 1, null]);
+  Module.ccall('Compile', 'number', ['number', 'number', 'number', 'number', 'number'], [dataHeap.byteOffset, buffer, directivesOnly, parseStampDirective, null]);
 
   var result = new Uint8Array(dataHeap.buffer, dataHeap.byteOffset, data.length);
 

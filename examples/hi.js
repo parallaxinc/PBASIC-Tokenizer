@@ -6,5 +6,5 @@ var myString = "\'{$STAMP BS2}\n" +
 'DEBUG "HI", CR\n' +
 'STOP';
 
-var TModuleRec = bs2tokenize.compile(myString);
+var TModuleRec = bs2tokenize.compile(myString, false, true);
 console.log(TModuleRec);
