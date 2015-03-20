@@ -52,7 +52,7 @@ describe('tokenizer', function(){
 
   it('#successfuly compiles', function(done){
 
-    var myString = '\'{$STAMP BS2}\n' +
+    var program = '\'{$STAMP BS2}\n' +
     'Counter VAR BYTE\n' +
     'FOR Counter = 1 to 20\n' +
     '  PULSOUT 0,50000\n' +
@@ -75,7 +75,7 @@ describe('tokenizer', function(){
     var PacketBuffer = new Buffer([0xFE, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18, 0x14, 0x20, 0x8C, 0x0E, 0xD8, 0xC8, 0x7C, 0xFF, 0x0E, 0x60, 0x4A, 0xAE, 0xE8, 0x9F, 0x49, 0xC1, 0x50, 0xC3, 0x6F, 0x8D, 0xD1, 0x03, 0x07, 0xC0, 0x60]);
     PacketBuffer = Buffer.concat([PacketBuffer, empty2]);
 
-    var TModuleRec = bs2tokenize.compile(myString, false, true);
+    var TModuleRec = bs2tokenize.compile(program, false, true);
 
     expect(TModuleRec.Succeeded).toEqual(1);
     expect(TModuleRec.Error).toEqual('');
@@ -95,7 +95,7 @@ describe('tokenizer', function(){
 
 it('#returns an error string', function(done){
 
-  var myString = '\'{$STAMP BS2}\n' +
+  var program = '\'{$STAMP BS2}\n' +
   ' VAR BYTE\n' + //should be  'Counter VAR BYTE\n' +
   'FOR Counter = 1 to 20\n' +
   '  PULSOUT 0,50000\n' +
@@ -103,7 +103,7 @@ it('#returns an error string', function(done){
   'NEXT\n' +
   'STOP';
 
-  var TModuleRec = bs2tokenize.compile(myString, false, true);
+  var TModuleRec = bs2tokenize.compile(program, false, true);
 
   expect(TModuleRec.Succeeded).toEqual(0);
   expect(TModuleRec.Error).toEqual('149-Expected a label, variable, or instruction');

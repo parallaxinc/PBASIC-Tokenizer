@@ -59,18 +59,18 @@ function parse(resultBuffer){
   return TModuleRec;
 }
 
-function compile(myString, directivesOnly, parseStampDirective){
+function compile(program, directivesOnly, parseStampDirective){
 
   // Allocate space for string and extra '0' at the end
-  var buffer = Module._malloc(myString.length+1);
+  var buffer = Module._malloc(program.length + 1);
 
   // Write the string to memory
-  Module.writeStringToMemory(myString, buffer);
+  Module.writeStringToMemory(program, buffer);
 
   //sizeof struct in c was 6508
   var data = new Uint8Array(6508);
 
-  data[88] = myString.length;
+  data[88] = program.length;
 
   // Get data byte size, allocate memory on Emscripten heap, and get pointer
   var nDataBytes = data.length * data.BYTES_PER_ELEMENT;
