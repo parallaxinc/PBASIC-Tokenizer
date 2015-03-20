@@ -1,5 +1,6 @@
 /*global Module: false */
 
+//The value returned is in the format: XYY ;where X is the major version number and Y is the minor. For example, if the Version function returned 116, that indicates the version of the tokenizer is 1.16. If Version returned 123, that would indicate the tokenizer is version 1.23
 function version(){
   return Module.ccall('Version', 'number');
 }
@@ -59,7 +60,12 @@ function parse(resultBuffer){
   return TModuleRec;
 }
 
-function compile(program, directivesOnly, parseStampDirective){
+//program String, Source code
+//directivesOnly Boolean, provides an option of only tokenizing the “compiler directives” from the source code, rather than the entire source. This option is helpful when the calling program needs to determine only the target module, serial port or project files that may be specified by the PBASIC source code.
+//targetModule Boolean, provides an option of parsing the Stamp directive from the source code, rather than accepting a value in the TargetModule field of the TModuleRec structure. OPTIONAL. If not provided a valid directive must be found in the Source string.
+function compile(program, directivesOnly, targetModule){
+
+  var parseStampDirective = targetModule ? false : true;
 
   // Allocate space for string and extra '0' at the end
   var buffer = Module._malloc(program.length + 1);
@@ -70,6 +76,7 @@ function compile(program, directivesOnly, parseStampDirective){
   //sizeof struct in c was 6508
   var data = new Uint8Array(6508);
 
+  data[9] = targetModule | 0;
   data[88] = program.length;
 
   // Get data byte size, allocate memory on Emscripten heap, and get pointer

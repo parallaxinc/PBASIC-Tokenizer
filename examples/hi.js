@@ -8,5 +8,5 @@ var program = "'{$STAMP BS2}\n" +
 'DEBUG "HI", CR\n' +
 'STOP';
 
-var TModuleRec = bs2tokenize.compile(program, false, true);
+var TModuleRec = bs2tokenize.compile(program, false);
 console.log(TModuleRec);
