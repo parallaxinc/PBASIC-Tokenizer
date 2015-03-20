@@ -39,9 +39,11 @@ function compile(myString, cb){
 
   var TModuleRec = {
     Succeeded: resultBuffer[0],
+    //3 padding bytes
     Error: Module.Pointer_stringify(get32(resultBuffer, 4)),
     DebugFlag: resultBuffer[8],
     TargetModule: resultBuffer[9],
+    //2 padding bytes
     TargetStart: get32(resultBuffer, 12),
     ProjectFiles: [
       get32(resultBuffer, 16),
@@ -78,6 +80,7 @@ function compile(myString, cb){
     },
     PacketCount: count,
     PacketBuffer: resultBuffer.slice(4201, 4201 + count * 18)
+    //3 padding bytes
   };
 
     // Free memory
