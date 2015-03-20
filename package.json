@@ -15,10 +15,14 @@
     "index.js"
   ],
   "scripts": {
+    "test": "mocha",
     "release": "emcc -o index.js -DLINUX Source/tokenizer.cpp -w -s EXPORTED_FUNCTIONS=\"['_TestRecAlignment', '_Version', '_Compile']\" --post-js post.js"
   },
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "expect": "^1.6.0",
+    "mocha": "^2.2.1"
+  },
   "keywords": [
     "parallax pbasic tokenizer"
   ]
