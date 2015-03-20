@@ -8,6 +8,6 @@ var myString = "\'{$STAMP BS2}\n" +
 'DEBUG "HI", CR\n' +
 'STOP';
 
-bs2tokenize.compile(myString, function(err, buffer){
-  console.log(buffer);
+bs2tokenize.compile(myString, function(err, TModuleRec){
+  console.log(TModuleRec);
 });
