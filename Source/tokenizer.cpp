@@ -114,7 +114,7 @@
   #endif
 
   STDAPI TestRecAlignment(TModuleRec *Rec);
-  STDAPI Version(void);
+  uint16_t Version(void);
   #if defined(DevDebug)
     STDAPI GetVariableItems(byte *VBitCount, byte *VBases);
     STDAPI GetSymbolTableItem(TSymbolTable *Sym, int Idx);
@@ -448,7 +448,7 @@ STDAPI TestRecAlignment(TModuleRec *Rec)
 
 /*------------------------------------------------------------------------------*/
 
-STDAPI Version(void)
+uint16_t Version(void)
 /*Return version number of this tokenizer*/
 {
   return(TokenizerVersion);
