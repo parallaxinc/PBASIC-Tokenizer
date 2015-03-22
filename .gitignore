@@ -29,3 +29,8 @@ node_modules
 
 # Garbage files
 .DS_Store
+
+# Ignore built files
+/index.js
+/browser.js
+/tokenizer.js

@@ -10,13 +10,17 @@
     "node": ">= 0.10"
   },
   "main": "index.js",
+  "browser": "browser.js",
   "files": [
     "LICENSE",
-    "index.js"
+    "index.js",
+    "browser.js"
   ],
   "scripts": {
+    "prepublish": "npm run emscripten && npm run webpack",
     "test": "mocha",
-    "release": "emcc -o index.js -DLINUX Source/tokenizer.cpp -w -s EXPORTED_FUNCTIONS=\"['_TestRecAlignment', '_Version', '_Compile']\" --post-js post.js"
+    "build": "webpack --config webpack.node.js && webpack --config webpack.browser.js",
+    "emscripten": "emcc -o tokenizer.js -DLINUX Source/tokenizer.cpp -w -s EXPORTED_FUNCTIONS=\"['_TestRecAlignment', '_Version', '_Compile']\" --post-js post.js"
   },
   "dependencies": {},
   "devDependencies": {
