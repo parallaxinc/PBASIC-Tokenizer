@@ -25,7 +25,8 @@
   "dependencies": {},
   "devDependencies": {
     "expect": "^1.6.0",
-    "mocha": "^2.2.1"
+    "mocha": "^2.2.1",
+    "webpack": "^1.7.3"
   },
   "keywords": [
     "parallax pbasic tokenizer"
