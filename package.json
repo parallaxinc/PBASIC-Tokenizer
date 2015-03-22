@@ -29,6 +29,8 @@
     "webpack": "^1.7.3"
   },
   "keywords": [
-    "parallax pbasic tokenizer"
+    "parallax",
+    "pbasic",
+    "tokenizer"
   ]
 }
