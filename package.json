@@ -17,7 +17,7 @@
     "browser.js"
   ],
   "scripts": {
-    "prepublish": "npm run emscripten && npm run webpack",
+    "prepublish": "npm run emscripten && npm run build",
     "test": "mocha",
     "build": "webpack --config webpack.node.js && webpack --config webpack.browser.js",
     "emscripten": "emcc -o tokenizer.js -DLINUX Source/tokenizer.cpp -w -s EXPORTED_FUNCTIONS=\"['_TestRecAlignment', '_Version', '_Compile']\" --post-js post.js"
