@@ -9,6 +9,13 @@ function get32(buffer, starting){
   return buffer[starting] + (buffer[starting + 1] << 8) + (buffer[starting + 2] << 16) + (buffer[starting + 3] << 24);
 }
 
+function set32(buffer, starting, value){
+  buffer[starting + 3] = (value & 0xFF000000) >> 24;
+  buffer[starting + 2] = (value & 0x00FF0000) >> 16;
+  buffer[starting + 1] = (value & 0x0000FF00) >> 8;
+  buffer[starting] =     (value & 0x000000FF);
+}
+
 function parse(resultBuffer){
 
   var TModuleRec = {
@@ -77,7 +84,7 @@ function compile(program, directivesOnly, targetModule){
   var data = new Uint8Array(6508);
 
   data[9] = targetModule | 0;
-  data[88] = program.length;
+  set32(data, 88, program.length);
 
   // Get data byte size, allocate memory on Emscripten heap, and get pointer
   var nDataBytes = data.length * data.BYTES_PER_ELEMENT;
