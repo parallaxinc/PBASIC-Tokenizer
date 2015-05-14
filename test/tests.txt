@@ -12859,6 +12859,7 @@ NoPress:
 
 
 !'PASS  - Testing the µ character (at end of first comment)
+'SKIP: Yes
 'DEBUG: Yes
 'TARGETMODULE: 2
 'LANGUAGE: 200
@@ -13009,14 +13010,12 @@ InitLCD:
 
 ' Main program loop: Display "Hello, My Friend"
   Index = 0
-Main:
-  LOOKUP Index,["Hello,",0],Char
+Main:  LOOKUP Index,["Hello,",0],Char
   IF Char = 0 THEN EndIt
         gosub SendText
   Index = Index + 1
         GOTO Main  
-EndIt:
-  END
+EndIt:  END
 
 ' Write the ASCII character to LCD. 
 SendText:
