@@ -25,6 +25,8 @@
   "dependencies": {},
   "devDependencies": {
     "expect": "^1.6.0",
+    "iconv-lite": "^0.4.8",
+    "lodash": "^3.8.0",
     "mocha": "^2.2.1",
     "webpack": "^1.7.3"
   },
