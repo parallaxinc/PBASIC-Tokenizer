@@ -1,18 +1,51 @@
 'use strict';
 
-var util = require('util');
 var fs = require('fs');
-var _ = require('lodash');
 var path = require('path');
+
+var _ = require('lodash');
 var expect = require('expect');
 var iconv = require('iconv-lite');
 
 var tokenizer = require('../');
 
+// This regex parses the individual validation arguments at the head.
+// Ex:
+// 'TARGETMODULE: 4
+// 'LANGUAGE: 200
 var argRegex = /\n\'(\w+):\s*([^\n]+)/g;
+
+// This regex parses the PASS/FAIL header, the FAIL header can have a specific error message that must be present.
+// 'FAIL / 144-Expression is too complex / 146/1
 var passFailRegex = /\'(PASS|FAIL)\s*\/?([^\n]*)/g;
+
+// This regex parses fields that are referenced by offset.
+// 'EEPROM: @2039 $00 $9B $A7 $8E $8D $9C $2F $07 $C0
 var valueAtRegex = /@(\d+)\s+([^\n]+)/;
+
+// This regex parses values in an EEPROM/PACKETBUFFER test.
+//'PACKETBUFFER: @0 $FF $00 $00 $00 $00 $00 $00 $00 $00 $9B $A7 $8E $8D $9C $2F $07
 var hexRegex = /\$([A-Fa-f0-9]+)/g;
+
+/** EXAMPLE TEST CASE:
+
+!'PASS
+'DEBUG: No
+'TARGETMODULE: 4
+'LANGUAGE: 200
+'VARIABLES: 8 / 0,0,1,0 / 56,14,7,3
+'EEPROM: @2039 $00 $9B $A7 $8E $8D $9C $2F $07 $C0
+'PACKETCOUNT: 1
+'PACKETBUFFER: @0 $FF $00 $00 $00 $00 $00 $00 $00 $00 $9B $A7 $8E $8D $9C $2F $07
+'PACKETBUFFER: @16 $C0 $12
+
+'{$STAMP BS2sx}
+
+Temp  VAR BYTE
+
+PUT 60, Temp+10
+
+**/
 
 function loadTestList(filename){
   console.log('Reading tests from tests.txt...');
@@ -25,6 +58,7 @@ function loadTestList(filename){
   return tests;
 }
 
+
 function parseTestCase(test){
   var args = {};
   var arg = argRegex.exec(test);
@@ -33,11 +67,11 @@ function parseTestCase(test){
     var existing = args[name];
     var value = arg[2];
     if(_.isArray(existing)){
-        existing.push(value);
+      existing.push(value);
     }else if(existing){
-        args[name] = [existing, value];
+      args[name] = [existing, value];
     }else{
-        args[name] = value;
+      args[name] = value;
     }
     arg = argRegex.exec(test);
   }
