@@ -20,14 +20,19 @@
     "prepublish": "npm run emscripten && npm run build",
     "test": "mocha",
     "build": "webpack --config webpack.node.js && webpack --config webpack.browser.js",
-    "emscripten": "emcc -o tokenizer.js -DLINUX Source/tokenizer.cpp -w -s EXPORTED_FUNCTIONS=\"['_TestRecAlignment', '_Version', '_Compile']\" --post-js post.js"
+    "emscripten": "gulp fetch && ./emscripten.sh"
   },
   "dependencies": {},
   "devDependencies": {
+    "babel": "^5.4.2",
     "expect": "^1.6.0",
+    "gulp": "gulpjs/gulp#4.0",
+    "gunzip-maybe": "^1.1.0",
     "iconv-lite": "^0.4.8",
     "lodash": "^3.8.0",
     "mocha": "^2.2.1",
+    "request": "^2.55.0",
+    "tar-fs": "^1.5.1",
     "webpack": "^1.7.3"
   },
   "keywords": [

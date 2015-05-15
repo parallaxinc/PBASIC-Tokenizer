@@ -34,3 +34,6 @@ node_modules
 /index.js
 /browser.js
 /tokenizer.js
+
+# Emscripten Portable Client
+/emsdk_portable
