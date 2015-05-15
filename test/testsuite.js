@@ -13,7 +13,7 @@ var tokenizer = require('../');
 // Ex:
 // 'TARGETMODULE: 4
 // 'LANGUAGE: 200
-var argRegex = /\n\'(\w+):\s*([^\n]+)/g;
+var argRegex = /\n\'(\w+):\s*([^\r\n]+)/g;
 
 // This regex parses the PASS/FAIL header, the FAIL header can have a specific error message that must be present.
 // 'FAIL / 144-Expression is too complex / 146/1
@@ -51,7 +51,7 @@ function loadTestList(filename){
   console.log('Reading tests from tests.txt...');
   var testFile = path.resolve(__dirname, filename);
 
-  var testData = iconv.decode(fs.readFileSync(testFile), 'ascii');
+  var testData = iconv.decode(fs.readFileSync(testFile), 'ISO-8859-1');
 
   var tests = testData.split('\n!');
   console.log('Found ' + tests.length + ' Tests!');
