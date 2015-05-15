@@ -132,7 +132,7 @@ function validateResult(test, result){
 }
 
 
-describe.only('Tokenizer Test Suite', function(){
+describe('Tokenizer Test Suite', function(){
   var testSuite = loadTestList('tests.txt');
 
   _.forEach(testSuite, function(testCase, testNum){
