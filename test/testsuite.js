@@ -172,16 +172,19 @@ describe('Tokenizer Test Suite', function(){
   _.forEach(testSuite, function(testCase, testNum){
     var test = parseTestCase(testCase);
 
-    if(test.skip === 'Yes'){
-      return;
-    }
-
     var testName = test.purpose || _.get(test, 'expect[0]') || (test.pass ? 'Should Pass' : 'Should Fail');
 
+    if(test.skip === 'Yes'){
+      it.skip('#' + testNum + ' - ' + testName, function(){
+        var result = tokenizer.compile(test.source);
+        validateResult(test, result);
+      });
+    }else{
       it('#' + testNum + ' - ' + testName, function(){
         var result = tokenizer.compile(test.source);
         validateResult(test, result);
       });
+    }
   });
 
 });
