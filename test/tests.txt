@@ -12895,7 +12895,6 @@ GOTO Again
 
 
 !'PASS - Testing many strange characters (in the "connect as follows" section)
-'SKIP: Yes
 'DEBUG: No
 'TARGETMODULE: 2
 'LANGUAGE: 200
