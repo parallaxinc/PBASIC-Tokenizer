@@ -122,10 +122,10 @@ function validateBuffer(test, result, testField, resultField){
       var startPos = _.parseInt(fields[1]);
       var row = fields[2];
       var values = [];
-      var hexValue = hexRegex.exec(row);
-      while(hexValue){
-        values.push(_.parseInt(hexValue[1], 16));
-        hexValue = hexRegex.exec(row);
+      var hex = hexRegex.exec(row);
+      while(hex){
+        values.push(_.parseInt(hex[1], 16));
+        hex = hexRegex.exec(row);
       }
       _.forEach(values, function(value, position){
         var resultValue = result[resultField].readUInt8(startPos + position);
