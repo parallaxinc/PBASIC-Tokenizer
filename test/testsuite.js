@@ -175,12 +175,12 @@ describe('Tokenizer Test Suite', function(){
     var testName = test.purpose || _.get(test, 'expect[0]') || (test.pass ? 'Should Pass' : 'Should Fail');
 
     if(test.skip === 'Yes'){
-      it.skip('#' + testNum + ' - ' + testName, function(){
+      it.skip('#' + (testNum + 1) + ' - ' + testName, function(){
         var result = tokenizer.compile(test.source);
         validateResult(test, result);
       });
     }else{
-      it('#' + testNum + ' - ' + testName, function(){
+      it('#' + (testNum + 1) + ' - ' + testName, function(){
         var result = tokenizer.compile(test.source);
         validateResult(test, result);
       });
