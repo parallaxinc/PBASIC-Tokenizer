@@ -78,7 +78,7 @@ function compile(program, directivesOnly, targetModule){
   var buffer = Module._malloc(program.length + 1);
 
   // Write the string to memory
-  Module.writeStringToMemory(program, buffer);
+  Module.writeAsciiToMemory(program, buffer);
 
   //sizeof struct in c was 6508
   var data = new Uint8Array(6508);

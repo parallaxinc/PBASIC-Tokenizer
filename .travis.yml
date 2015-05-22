@@ -1,6 +1,12 @@
-sudo: false
-language: node_js
-node_js:
-  - 'iojs'
-  - '0.12'
-  - '0.10'
+# need to run on OSX because emscripten fails on Travis' Linux
+# so we specify objective-c and just replace script with `npm test`
+language: objective-c
+before_install:
+  - brew install python
+  - brew link --overwrite python
+  - curl https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz | tar zx
+  - ./emscripten.sh
+install:
+  - npm install
+script:
+  - npm test
