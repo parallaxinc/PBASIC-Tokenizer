@@ -73,7 +73,7 @@ function parse(resultBuffer){
 function compile(program, directivesOnly, targetModule){
   // Per spec: Any multi-byte characters are illegal.
   // They will be replaced with ';' to intentionally cause a compiler error.
-  var source = program.replace(/[^\x00-\xFF]/, ';');
+  var source = program.replace(/[^\x00-\xFF]/g, ';');
 
   var parseStampDirective = targetModule ? false : true;
 
