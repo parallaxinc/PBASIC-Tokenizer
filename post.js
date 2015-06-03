@@ -71,20 +71,23 @@ function parse(resultBuffer){
 //directivesOnly Boolean, provides an option of only tokenizing the “compiler directives” from the source code, rather than the entire source. This option is helpful when the calling program needs to determine only the target module, serial port or project files that may be specified by the PBASIC source code.
 //targetModule Boolean, provides an option of parsing the Stamp directive from the source code, rather than accepting a value in the TargetModule field of the TModuleRec structure. OPTIONAL. If not provided a valid directive must be found in the Source string.
 function compile(program, directivesOnly, targetModule){
+  // Per spec: Any multi-byte characters are illegal.
+  // They will be replaced with ';' to intentionally cause a compiler error.
+  var source = program.replace(/[^\x00-\xFF]/g, ';');
 
   var parseStampDirective = targetModule ? false : true;
 
   // Allocate space for string and extra '0' at the end
-  var buffer = Module._malloc(program.length + 1);
+  var buffer = Module._malloc(source.length + 1);
 
   // Write the string to memory
-  Module.writeAsciiToMemory(program, buffer);
+  Module.writeAsciiToMemory(source, buffer);
 
   //sizeof struct in c was 6508
   var data = new Uint8Array(6508);
 
   data[9] = targetModule | 0;
-  set32(data, 88, program.length);
+  set32(data, 88, source.length);
 
   // Get data byte size, allocate memory on Emscripten heap, and get pointer
   var nDataBytes = data.length * data.BYTES_PER_ELEMENT;
