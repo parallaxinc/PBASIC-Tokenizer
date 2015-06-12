@@ -9,24 +9,6 @@ var iconv = require('iconv-lite');
 
 var tokenizer = require('../');
 
-// This regex parses the individual validation arguments at the head.
-// Ex:
-// 'TARGETMODULE: 4
-// 'LANGUAGE: 200
-var argRegex = /\n\'(\w+):\s*([^\r\n]+)/g;
-
-// This regex parses the PASS/FAIL header, the FAIL header can have a specific error message that must be present.
-// 'FAIL / 144-Expression is too complex / 146/1
-var passFailRegex = /\'(PASS|FAIL)\s*\/?([^\n]*)/g;
-
-// This regex parses fields that are referenced by offset.
-// 'EEPROM: @2039 $00 $9B $A7 $8E $8D $9C $2F $07 $C0
-var valueAtRegex = /@(\d+)\s+([^\n]+)/;
-
-// This regex parses values in an EEPROM/PACKETBUFFER test.
-//'PACKETBUFFER: @0 $FF $00 $00 $00 $00 $00 $00 $00 $00 $9B $A7 $8E $8D $9C $2F $07
-var hexRegex = /\$([A-Fa-f0-9]+)/g;
-
 /** EXAMPLE TEST CASE:
 
 !'PASS
@@ -47,11 +29,16 @@ PUT 60, Temp+10
 
 **/
 
-function loadTestList(filename){
-  console.log('Reading tests from tests.txt...');
+function loadTestList(filename, opts){
+  console.log('Reading tests from ' + filename + '...');
   var testFile = path.resolve(__dirname, filename);
 
-  var testData = iconv.decode(fs.readFileSync(testFile), 'ISO-8859-1');
+  var testData = '';
+  if(opts.decode){
+    testData = iconv.decode(fs.readFileSync(testFile), 'ISO-8859-1');
+  } else {
+    testData = fs.readFileSync(testFile, 'utf8');
+  }
 
   var tests = testData.split('\n!');
   console.log('Found ' + tests.length + ' Tests!');
@@ -60,6 +47,16 @@ function loadTestList(filename){
 
 
 function parseTestCase(test){
+  // This regex parses the individual validation arguments at the head.
+  // Ex:
+  // 'TARGETMODULE: 4
+  // 'LANGUAGE: 200
+  var argRegex = /\n\'(\w+):\s*([^\r\n]+)/g;
+
+  // This regex parses the PASS/FAIL header, the FAIL header can have a specific error message that must be present.
+  // 'FAIL / 144-Expression is too complex / 146/1
+  var passFailRegex = /\'(PASS|FAIL)\s*\/?([^\n]*)/g;
+
   var args = {};
   var arg = argRegex.exec(test);
   while(arg !== null && arg.length > 2 && arg[1] && arg[1].length > 0){
@@ -103,6 +100,10 @@ function testResultNumber(test, result, resultField, testField){
 }
 
 function checkProjectFile(test, result, filename){
+  // This regex parses fields that are referenced by offset.
+  // 'EEPROM: @2039 $00 $9B $A7 $8E $8D $9C $2F $07 $C0
+  var valueAtRegex = /@(\d+)\s+([^\n]+)/;
+
   var file = valueAtRegex.exec(filename);
   if(file){
     expect(result.ProjectFiles[_.parseInt(file[1]) - 1]).toEqual(file[2]);
@@ -110,6 +111,14 @@ function checkProjectFile(test, result, filename){
 }
 
 function validateBuffer(test, result, testField, resultField){
+  // This regex parses fields that are referenced by offset.
+  // 'EEPROM: @2039 $00 $9B $A7 $8E $8D $9C $2F $07 $C0
+  var valueAtRegex = /@(\d+)\s+([^\n]+)/;
+
+  // This regex parses values in an EEPROM/PACKETBUFFER test.
+  //'PACKETBUFFER: @0 $FF $00 $00 $00 $00 $00 $00 $00 $00 $9B $A7 $8E $8D $9C $2F $07
+  var hexRegex = /\$([A-Fa-f0-9]+)/g;
+
   var tests;
   if(_.isString(test[testField])){
     tests = [test[testField]];
@@ -167,12 +176,22 @@ function validateResult(test, result){
 
 
 describe('Tokenizer Test Suite', function(){
-  var testSuite = loadTestList('tests.txt');
+  var isoTests = loadTestList('tests.txt', { decode: true });
+  var utf8Tests = loadTestList('tests-utf8.txt', { decode: false });
+  var testSuite = isoTests.concat(utf8Tests);
 
   _.forEach(testSuite, function(testCase, testNum){
     var test = parseTestCase(testCase);
-
-    var testName = test.purpose || _.get(test, 'expect[0]') || (test.pass ? 'Should Pass' : 'Should Fail');
+    var testName = test.purpose || _.get(test, 'expect[0]');
+    if(!testName && test.pass){
+      testName = 'Should Pass';
+    }
+    if(!testName && test.fail){
+      testName = 'Should Fail';
+    }
+    if(!testName){
+      testName = 'Not a Test';
+    }
 
     if(test.skip === 'Yes'){
       it.skip('#' + (testNum + 1) + ' - ' + testName, function(){
