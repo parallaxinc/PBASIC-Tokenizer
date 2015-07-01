@@ -31,6 +31,7 @@ describe('tokenizer', function(){
     expect(TModuleRec.Error).toEqual('');
     expect(TModuleRec.DebugFlag).toEqual(true);
     expect(TModuleRec.TargetModule).toEqual(2);
+    expect(TModuleRec.TargetModuleName).toEqual('BS2');
     expect(TModuleRec.TargetStart).toEqual(3);
     expect(TModuleRec.ProjectFiles).toEqual(['4', '5', '6', '7', '8', '9', '10']);
     expect(TModuleRec.ProjectFilesStart).toEqual([11, 12, 13, 14, 15, 16, 17]);
@@ -81,6 +82,7 @@ describe('tokenizer', function(){
     expect(TModuleRec.Error).toEqual('');
     expect(TModuleRec.DebugFlag).toEqual(false);
     expect(TModuleRec.TargetModule).toEqual(2);
+    expect(TModuleRec.TargetModuleName).toEqual('BS2');
     expect(TModuleRec.TargetStart).toEqual(9);
     expect(TModuleRec.LanguageVersion).toEqual(200);
     expect(TModuleRec.LanguageStart).toEqual(0);
@@ -124,6 +126,7 @@ describe('tokenizer', function(){
     expect(TModuleRec.Error).toEqual('');
     expect(TModuleRec.DebugFlag).toEqual(false);
     expect(TModuleRec.TargetModule).toEqual(2);
+    expect(TModuleRec.TargetModuleName).toEqual('BS2');
     expect(TModuleRec.TargetStart).toEqual(0);
     expect(TModuleRec.LanguageVersion).toEqual(200);
     expect(TModuleRec.LanguageStart).toEqual(0);
