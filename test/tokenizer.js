@@ -50,7 +50,7 @@ describe('tokenizer', function(){
     done();
   });
 
-  it('#successfuly compiles without targetModule argument', function(done){
+  it('#successfully compiles without targetModule argument', function(done){
 
     var program = '\'{$STAMP BS2}\n' +
     'Counter VAR BYTE\n' +
@@ -93,7 +93,7 @@ describe('tokenizer', function(){
     done();
   });
 
-  it('#successfuly compiles with targetModule argument', function(done){
+  it('#successfully compiles with targetModule argument', function(done){
 
     var program = '\'{$STAMP BS2}\n' +
     'Counter VAR BYTE\n' +
@@ -156,6 +156,36 @@ describe('tokenizer', function(){
     expect(TModuleRec.TargetStart).toEqual(9);
     expect(TModuleRec.LanguageVersion).toEqual(200);
     expect(TModuleRec.LanguageStart).toEqual(0);
+    done();
+  });
+
+
+  it('#should parse an error state', function(done){
+
+    var program = '\'{$STAMP BS2}\n' +
+    ' VAR BYTE\n' + //should be  'Counter VAR BYTE\n' +
+    'FOR Counter = 1 to 20\n' +
+    '  PULSOUT 0,50000\n' +
+    '  PAUSE 250\n' +
+    'NEXT\n' +
+    'STOP';
+
+    var TModuleRec = bs2tokenize.compile(program, false);
+
+    expect(TModuleRec.Succeeded).toEqual(false);
+    expect(TModuleRec.Error).toEqual('149-Expected a label, variable, or instruction');
+    expect(TModuleRec.DebugFlag).toEqual(false);
+    expect(TModuleRec.TargetModule).toEqual(2);
+    expect(TModuleRec.TargetStart).toEqual(9);
+    expect(TModuleRec.LanguageVersion).toEqual(200);
+    expect(TModuleRec.LanguageStart).toEqual(0);
+
+    var parsedErr = bs2tokenize.parseError(TModuleRec);
+    expect(parsedErr.message).toEqual('Expected a label, variable, or instruction');
+    expect(parsedErr.code).toEqual(149);
+    expect(parsedErr.errorPosition).toEqual(15);
+    expect(parsedErr.errorLength).toEqual(3);
+
     done();
   });
 
