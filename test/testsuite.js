@@ -154,7 +154,7 @@ function validateResult(test, result){
     expect(result.Succeeded).toBe(false);
     var expectedError = _.get(test, 'expect[0]');
     if(expectedError && expectedError.length > 0){
-      expect(result.Error).toInclude(expectedError);
+      expect(result.Error.raw).toInclude(expectedError);
     }
   }
   testResultNumber(test, result, 'LanguageVersion', 'language');

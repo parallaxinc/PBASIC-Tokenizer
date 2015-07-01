@@ -31,6 +31,7 @@ describe('tokenizer', function(){
     expect(TModuleRec.Error).toEqual('');
     expect(TModuleRec.DebugFlag).toEqual(true);
     expect(TModuleRec.TargetModule).toEqual(2);
+    expect(TModuleRec.TargetModuleName).toEqual('BS2');
     expect(TModuleRec.TargetStart).toEqual(3);
     expect(TModuleRec.ProjectFiles).toEqual(['4', '5', '6', '7', '8', '9', '10']);
     expect(TModuleRec.ProjectFilesStart).toEqual([11, 12, 13, 14, 15, 16, 17]);
@@ -50,7 +51,7 @@ describe('tokenizer', function(){
     done();
   });
 
-  it('#successfuly compiles without targetModule argument', function(done){
+  it('#successfully compiles without targetModule argument', function(done){
 
     var program = '\'{$STAMP BS2}\n' +
     'Counter VAR BYTE\n' +
@@ -81,6 +82,7 @@ describe('tokenizer', function(){
     expect(TModuleRec.Error).toEqual('');
     expect(TModuleRec.DebugFlag).toEqual(false);
     expect(TModuleRec.TargetModule).toEqual(2);
+    expect(TModuleRec.TargetModuleName).toEqual('BS2');
     expect(TModuleRec.TargetStart).toEqual(9);
     expect(TModuleRec.LanguageVersion).toEqual(200);
     expect(TModuleRec.LanguageStart).toEqual(0);
@@ -93,7 +95,7 @@ describe('tokenizer', function(){
     done();
   });
 
-  it('#successfuly compiles with targetModule argument', function(done){
+  it('#successfully compiles with targetModule argument', function(done){
 
     var program = '\'{$STAMP BS2}\n' +
     'Counter VAR BYTE\n' +
@@ -124,6 +126,7 @@ describe('tokenizer', function(){
     expect(TModuleRec.Error).toEqual('');
     expect(TModuleRec.DebugFlag).toEqual(false);
     expect(TModuleRec.TargetModule).toEqual(2);
+    expect(TModuleRec.TargetModuleName).toEqual('BS2');
     expect(TModuleRec.TargetStart).toEqual(0);
     expect(TModuleRec.LanguageVersion).toEqual(200);
     expect(TModuleRec.LanguageStart).toEqual(0);
@@ -137,7 +140,7 @@ describe('tokenizer', function(){
   });
 
 
-  it('#returns an error string', function(done){
+  it('#returns an error object', function(done){
 
     var program = '\'{$STAMP BS2}\n' +
     ' VAR BYTE\n' + //should be  'Counter VAR BYTE\n' +
@@ -150,7 +153,11 @@ describe('tokenizer', function(){
     var TModuleRec = bs2tokenize.compile(program, false);
 
     expect(TModuleRec.Succeeded).toEqual(false);
-    expect(TModuleRec.Error).toEqual('149-Expected a label, variable, or instruction');
+    expect(TModuleRec.Error.raw).toEqual('149-Expected a label, variable, or instruction');
+    expect(TModuleRec.Error.message).toEqual('Expected a label, variable, or instruction');
+    expect(TModuleRec.Error.code).toEqual(149);
+    expect(TModuleRec.Error.errorPosition).toEqual(15);
+    expect(TModuleRec.Error.errorLength).toEqual(3);
     expect(TModuleRec.DebugFlag).toEqual(false);
     expect(TModuleRec.TargetModule).toEqual(2);
     expect(TModuleRec.TargetStart).toEqual(9);

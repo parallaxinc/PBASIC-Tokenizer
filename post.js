@@ -16,6 +16,31 @@ function set32(buffer, starting, value){
   buffer[starting] =     (value & 0x000000FF);
 }
 
+//0=None, 1=<reserved>, 2=BS2, 3=BS2e, 4=BS2sx, 5=BS2p, 6=BS2pe
+var moduleNames = [ 'None', 'Reserved', 'BS2', 'BS2e', 'BS2sx', 'BS2p', 'BS2pe'];
+
+function resolveModuleName(moduleId){
+  if(moduleId >= moduleNames.length || moduleId < 0){
+    return 'Unknown';
+  }
+  return moduleNames[moduleId];
+}
+
+function parseError(TModuleRec){
+  var errFilter = /(\d+)-(.+)/;
+  var errorDetails = errFilter.exec(TModuleRec.Error);
+  if(errorDetails){
+    var err = new Error(errorDetails[2]);
+    err.code = parseInt(errorDetails[1], 10);
+
+    err.errorPosition = TModuleRec.ErrorStart;
+    err.errorLength = TModuleRec.ErrorLength;
+    err.raw = TModuleRec.Error;
+    return err;
+  }
+  return TModuleRec.Error;
+}
+
 function parse(resultBuffer){
 
   var TModuleRec = {
@@ -24,6 +49,7 @@ function parse(resultBuffer){
     Error: Module.Pointer_stringify(get32(resultBuffer, 4)),
     DebugFlag: resultBuffer[8] === 1 ? true : false,
     TargetModule: resultBuffer[9],
+    TargetModuleName: resolveModuleName(resultBuffer[9]),
     //2 padding bytes
     TargetStart: get32(resultBuffer, 12),
     ProjectFiles: [
@@ -63,6 +89,8 @@ function parse(resultBuffer){
     PacketBuffer: resultBuffer.slice(4201, 4201 + 2304)
     //3 padding bytes
   };
+
+  TModuleRec.Error = parseError(TModuleRec);
 
   return TModuleRec;
 }
