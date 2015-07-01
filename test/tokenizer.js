@@ -140,7 +140,7 @@ describe('tokenizer', function(){
   });
 
 
-  it('#returns an error string', function(done){
+  it('#returns an error object', function(done){
 
     var program = '\'{$STAMP BS2}\n' +
     ' VAR BYTE\n' + //should be  'Counter VAR BYTE\n' +
@@ -153,42 +153,16 @@ describe('tokenizer', function(){
     var TModuleRec = bs2tokenize.compile(program, false);
 
     expect(TModuleRec.Succeeded).toEqual(false);
-    expect(TModuleRec.Error).toEqual('149-Expected a label, variable, or instruction');
+    expect(TModuleRec.Error.raw).toEqual('149-Expected a label, variable, or instruction');
+    expect(TModuleRec.Error.message).toEqual('Expected a label, variable, or instruction');
+    expect(TModuleRec.Error.code).toEqual(149);
+    expect(TModuleRec.Error.errorPosition).toEqual(15);
+    expect(TModuleRec.Error.errorLength).toEqual(3);
     expect(TModuleRec.DebugFlag).toEqual(false);
     expect(TModuleRec.TargetModule).toEqual(2);
     expect(TModuleRec.TargetStart).toEqual(9);
     expect(TModuleRec.LanguageVersion).toEqual(200);
     expect(TModuleRec.LanguageStart).toEqual(0);
-    done();
-  });
-
-
-  it('#should parse an error state', function(done){
-
-    var program = '\'{$STAMP BS2}\n' +
-    ' VAR BYTE\n' + //should be  'Counter VAR BYTE\n' +
-    'FOR Counter = 1 to 20\n' +
-    '  PULSOUT 0,50000\n' +
-    '  PAUSE 250\n' +
-    'NEXT\n' +
-    'STOP';
-
-    var TModuleRec = bs2tokenize.compile(program, false);
-
-    expect(TModuleRec.Succeeded).toEqual(false);
-    expect(TModuleRec.Error).toEqual('149-Expected a label, variable, or instruction');
-    expect(TModuleRec.DebugFlag).toEqual(false);
-    expect(TModuleRec.TargetModule).toEqual(2);
-    expect(TModuleRec.TargetStart).toEqual(9);
-    expect(TModuleRec.LanguageVersion).toEqual(200);
-    expect(TModuleRec.LanguageStart).toEqual(0);
-
-    var parsedErr = bs2tokenize.parseError(TModuleRec);
-    expect(parsedErr.message).toEqual('Expected a label, variable, or instruction');
-    expect(parsedErr.code).toEqual(149);
-    expect(parsedErr.errorPosition).toEqual(15);
-    expect(parsedErr.errorLength).toEqual(3);
-
     done();
   });
 

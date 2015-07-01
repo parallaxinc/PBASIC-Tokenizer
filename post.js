@@ -26,6 +26,21 @@ function resolveModuleName(moduleId){
   return moduleNames[moduleId];
 }
 
+function parseError(TModuleRec){
+  var errFilter = /(\d+)-(.+)/;
+  var errorDetails = errFilter.exec(TModuleRec.Error);
+  if(errorDetails){
+    var err = new Error(errorDetails[2]);
+    err.code = parseInt(errorDetails[1], 10);
+
+    err.errorPosition = TModuleRec.ErrorStart;
+    err.errorLength = TModuleRec.ErrorLength;
+    err.raw = TModuleRec.Error;
+    return err;
+  }
+  return TModuleRec.Error;
+}
+
 function parse(resultBuffer){
 
   var TModuleRec = {
@@ -75,19 +90,9 @@ function parse(resultBuffer){
     //3 padding bytes
   };
 
+  TModuleRec.Error = parseError(TModuleRec);
+
   return TModuleRec;
-}
-
-function parseError(TModuleRec){
-  var errFilter = /(\d+)-(.+)/;
-  var errorDetails = errFilter.exec(TModuleRec.Error);
-  var err = new Error(errorDetails[2]);
-  err.code = parseInt(errorDetails[1], 10);
-
-  err.result = TModuleRec;
-  err.errorPosition = TModuleRec.ErrorStart;
-  err.errorLength = TModuleRec.ErrorLength;
-  return err;
 }
 
 //program String, Source code
@@ -165,6 +170,5 @@ function testRecAlignment(){
 module.exports = {
   version: version,
   compile: compile,
-  parseError: parseError,
   testRecAlignment: testRecAlignment
 };
