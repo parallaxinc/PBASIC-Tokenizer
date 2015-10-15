@@ -1,1 +1,1 @@
-In later commits, this folder will hold PBASIC Tokenizer and BASIC Stamp documentation as it relates to the tokenizer.
+In later commits, this folder will hold PBASIC Tokenizer and BASIC Stamp documentation as it relates to the tokenizer..
